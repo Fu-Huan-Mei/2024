@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格Table结构</title>
+</head>
+<body>
+    <!--1、table：表格包裹元素
+    border：表格分隔线（表格边框）-->
+    <table border="1">
+        <!--2、caption：表格标题-->
+        <caption>学生信息表</caption>
+        <!--3、表头-->
+        <thead>
+            <!--6、tr：行-->
+            <tr>
+                <!--7、th：表头单元格-->
+                <th>学号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+        <!--4、表格体-->
+        <tbody>
+            <tr>
+                <!--8、td：单元格-->
+                <td>001</td>
+                <td>张三</td>
+                <td>18</td>
+                <td>男</td>
+            </tr>
+        </tbody>
+        <!--5、表格底部-->
+        <tfoot></tfoot>
+    </table>
+</body>
+</html>
+
+<table>
+    <caption>表格标题</caption>
+    <thead>
+        <tr>
+            <th>单元格</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>单元格</td>
+        </tr>
+    </tbody>
+    <tfoot>表格底部</tfoot>
+</table>

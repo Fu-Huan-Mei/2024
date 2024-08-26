@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单元格跨行跨列</title>
+</head>
+<body>
+    <table>
+        <caption>
+            2024年学年第1学期学生个人课程表1
+        </caption>
+        <thead>
+            <tr><!--跨2行的单元格-->
+                <th rowspan="2">时间</th>
+                <th>周一</th>
+                <th>周二</th>
+                <th>周三</th>
+                <th>周四</th>
+                <th>周五</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>第一节</td>
+                <td>大学英语</td>
+                <td>中医学</td>
+                <td></td>
+                <td>人际沟通</td>
+            </tr>
+            <tr>
+                <td>第二节</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr><!--跨6个列的单元格-->
+                <td colspan="6">共计3节课</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
