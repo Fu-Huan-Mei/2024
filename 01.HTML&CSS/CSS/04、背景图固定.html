@@ -13,6 +13,13 @@
             line-height:600px;
             font-size:40px;
         }
+        /*1、图片中心点在元素中心点
+        2、问题：图片宽度不好确定，因为不同屏幕尺寸大小不同？
+        解决：1920px全尺寸图，让图片位置background-position:center;为center*/
+        .section-bg{
+            background-position:center ;
+            background-attachment: fixed;
+        }
         .section-bg01{
             background-image: url(./picture/1.png);
         }

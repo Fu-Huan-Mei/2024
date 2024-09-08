@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表图标案例</title>
+    <style>
+        h2{
+            padding-left: 40px;
+        }
+        .videos{
+            /*包含在盒子模型的width里*/
+            list-style-position: inside;
+        }
+        .type{
+            /*包含在盒子模型的padding-left里*/
+            list-style-position: outside;
+        }
+        .no-type{
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>热门视频</h2>
+    <!--1、问题：ul自带左40px的外边距，所以会看到左边距离-->
+    <ul class="videos">
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+    </ul>
+    <h2>精选图片</h2>
+    <ul class="videos">
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+    </ul>
+    <h2>头条新闻</h2>
+    <ul class="videos type">
+        <li class="no-type"><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li class="no-type"><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+        <li class="no-type"><a href="#">哈哈哈哈</a></li>
+        <li><a href="#">哈哈哈哈</a></li>
+    </ul>
+    <span></span>
+</body>
+</html>
