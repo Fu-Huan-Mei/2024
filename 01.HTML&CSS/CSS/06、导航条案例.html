@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航条案例</title>
+    <style>
+        body{
+            margin:0;
+        }
+        .nav{
+            height:40px;
+            line-height: 40px;
+            background: #fcfcfc;
+            border-top:4px solid #e4831f;
+            border-bottom:2px solid #e8eaec;
+            text-align: center;
+        }
+        .nav a {
+            display: inline-block;
+            /*继承祖先元素的行高line-height:40px;所以背景颜色高度为40px;*/
+            padding:0 20px;
+            color:#333;
+            text-decoration: none;
+        }
+
+        .nav a.dropdown{
+            background:url(./picture/1.png);
+        }
+        .nav a:hover{
+            color: aqua;
+            background-color: #edeef0;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="#">注册</a>
+        <a class="dropdown" href="#">注册</a>
+        <a href="#">注册</a>
+        <a href="#">注册</a>
+        <a href="#">注册</a>
+    </div>
+</body>
+</html>
