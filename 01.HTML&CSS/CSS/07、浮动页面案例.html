@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>页面案例：div+css布局：浮动布局 VS table表格布局</title>
+    <style>
+        /*全局样式*/
+        *{
+            margin:0;
+            padding:0;
+        }
+        .leftfix {
+            float:left;
+        }
+        .rightfix{
+            float:right;
+        }
+        .clearfix::after{
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .container{
+            width:960px;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!--1、版心：页面中有内容的地方：宽度固定且居中-->
+    <div class="container">
+        <div class="page-header .clearfix">
+            <div class="logo leftfix">logo</div>
+            <div class="banner1 leftfix">banner1</div>
+            <div class="banner2 rightfix">banner2</div>
+        </div>
+    </div>
+</body>
+</html>
