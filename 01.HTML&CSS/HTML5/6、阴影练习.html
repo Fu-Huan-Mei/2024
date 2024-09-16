@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阴影练习</title>
+    <style>
+        .box1{
+            box-sizing: border-box;
+            width:400px;
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,.2);
+        }
+        /*内阴影*/
+        .box1:hover{
+            box-shadow: inset 1px 1px 2px rgba(0,0,0,.9);
+        }
+        /*外阴影*/
+        .box1:focus{
+            box-shadow: 0 0 3px;
+        }
+        .box05{
+            width:100px;
+            height:50px;
+            box-shadow: 5px 0 5px red;
+        }
+        .ball{
+            margin:20px 0 200px 100px;
+            width:200px;
+            height:200px;
+            background-color: yellow;
+            box-shadow: inset -20px -20px 30px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        姓名：
+        <input class="box1"/>
+        <br>
+        介绍：
+        <textarea class="box2"></textarea>
+    </form>
+    <div class="box05"></div>
+    <!--球体-->
+    <div class="ball"></div>
+</body>
+</html>
