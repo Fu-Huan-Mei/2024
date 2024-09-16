@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI元素伪类选择器：练习</title>
+    <style>
+        .tab{
+            width:600px;
+        }
+        .tab-nav label{
+            display: inline-block;
+            line-height:40px;
+            padding:0 20px;
+            background-color: #ccc;
+        }
+        .tab-item{
+            display: none;
+            padding:20px;
+            height: 100px;
+            border:1px solid #ccc;
+        }
+        .tab-content input {
+            display: none;
+        }
+        
+        .tab-content :checked + .tab-item{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <div class="tab-nav">
+            <label for="tab01">未发货订单</label>
+            <label for="tab02">未收货订单</label>
+            <label for="tab03">未付款订单</label>
+        </div>
+        <div class="tab-content">
+            <input checked type="radio" name="tab" id="tab01">
+            <div class="tab-item">这是未发货订单</div>
+            <input type="radio" name="tab" id="tab02">
+            <div class="tab-item">这是未收货订单</div>
+            <input type="radio" name="tab" id="tab03">
+            <div class="tab-item">这是未付款订单</div>
+        </div>
+    </div>
+    
+</body>
+</html>

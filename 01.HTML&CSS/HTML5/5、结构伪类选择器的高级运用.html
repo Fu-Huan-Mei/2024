@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>结构伪类选择器的高级运用</title>
+    <!--:nth-child()、:nth-of-type()、:nth-last-child、:nth-last-of-type()-->
+    <style>
+        .news{
+            list-style: none;
+            padding:0;
+        }
+        .news li{
+            width:800px;
+        }
+        /*奇数行颜色是灰色*/
+        /* .news li:nth-child(odd){
+            background-color: #ccc;;
+        } */
+        /* .news li:nth-of-type(odd){
+            background-color: #ccc;;
+        } */
+        .news li:nth-child(2n-1){
+            background-color: #ccc;;
+        }
+        /*偶数行颜色是蓝色*/
+        /* .news li:nth-child(even){
+            background-color: #099;;
+        } */
+        .news li:nth-child(2n){
+            background-color: #099;;
+        }
+        /*选择行号是3的倍数的元素*/
+        .news li:nth-child(3n){
+            border-bottom: 2px solid #f00;
+        }
+    </style>
+</head>
+<body>
+    <ul class="news">
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem veritatis voluptates vitae sit iure? Ea, vero. Ipsum, fugiat architecto? Non nostrum magnam, corporis illum quisquam necessitatibus reprehenderit aspernatur beatae nobis.</li>
+    </ul>
+</body>
+</html>
