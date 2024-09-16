@@ -4,12 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>inut标签新增type属性</title>
+    <style>
+        input{
+            width:400px;
+        }
+    </style>
 </head>
 <body>
     <form action="">
         <h2>输入框类</h2>
-        <!--邮箱-->
-        <input type="email"/>
+        <!--邮箱：必须输入电子邮箱，否则无法提交表单；如果不输入则不验证-->
+        <input type="email" required="true"/>
+        <br>
+        <!--数字：不是数字无法输入；可设输入范围，超出范围表单无法提交，如果不输入则不会验证-->
+        <input max="100" min="-20" type="number" placeholder="请输入数字"/>
+        <br>
+        <!--step表示数字的最小变化（变化幅度，默认值是1，只能输入整数，否则无法提交）-->
+        <input type="number" step=""/>
+        <br>
+        <!--url：要求必须输入网址，否则表单无法提交；不输入不验证-->
+        <input type="url" name="" id=""/>
+        <br>
+        <!--tel：电话号码 没法验证  手机端会自动弹出数字按键-->
+        <input type="tel" name="" id="">
+        <br>
+        <!--search：搜索框  没法验证-->
+        <input type="search" name=""/>
+        <br>
+        <!--范围range：可修改数字范围：min和max、value：显示默认值、step：数字变化幅度-->
+        <input max="50" min="-50" type="range" name="" id="">
+        <br>
+        <!--颜色-->
+        <input type="color" name=""/>
+        <br>
+        <input type="time" name="" id="">
+        <br>
+        <input type="text" list="data"/>
+        <datalist id="data">
+            <option value="小高"></option>
+            <option value="小高"></option>
+            <option value="小高"></option>
+            <option value="小高"></option>
+            <option value="小高"></option>
+            <option value="小高"></option>
+        </datalist>
         <hr>
         <button>提交</button>
     </form>
