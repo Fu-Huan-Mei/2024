@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标悬停显示阴影</title>
+    <style>
+        body{
+            background-color: #fff;
+        }
+        .wrapper{
+            width:988px;
+            margin:0 auto;
+        }
+        .item{
+            margin-top: 20px;
+            margin-right: 20px;
+            float: left;
+            width:232px;
+            height:299px;
+            cursor: pointer;
+        }
+        .item:nth-child(4n){
+            margin-right: 0;
+        }
+        .item img{
+            display: block;
+            width:232px;
+            height:299px;
+        }
+        /*鼠标悬停显示阴影效果*/
+        .item:hover{
+            position: relative;
+            top:-2px;
+            box-shadow: 0 15px 30px rgba(0,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item">
+            <img src="../picture/1.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/2.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/1.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/2.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/1.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/2.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+        <div class="item">
+            <img src="../picture/3.png" alt="item" srcset="">
+        </div>
+    </div>
+</body>
+</html>
