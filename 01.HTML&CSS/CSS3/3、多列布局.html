@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多列布局</title>
+    <style>
+        .wrapper{
+            width:1000px;
+            padding:20px;
+            border:1px solid #ccc;
+            margin:20px auto;
+            /*🔺分为指定列数显示：3列*/
+            column-count: 3;
+            /*通过设置列宽实现分列布局*/
+            /* column-width: 300px; */
+            /*复合式*/
+            /* columns: 6 250px; */
+        }
+        .wrapper img{
+            /*参照点：所在列*/
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h2>如何3年之内赚够100万</h2>
+        <img src="../picture/1.png" alt="" srcset="">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus doloribus eos nisi mollitia sed optio cum ab laboriosam! Doloribus amet, sit libero laboriosam deserunt saepe aliquid facere? Deserunt, soluta quasi.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa similique sapiente ducimus modi sed quod, voluptatum voluptatibus itaque. Nostrum mollitia eius a quod commodi. Harum molestias libero natus eos facilis?
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum praesentium esse cum repellendus quaerat, debitis perspiciatis earum sit rerum recusandae magnam optio. Culpa eos quasi, similique pariatur sequi ex eius!
+        </p>
+    </div>
+</body>
+</html>
