@@ -13,25 +13,24 @@
             width:730px;
             margin:100px auto 0;
         }
+        .larges{
+            height:454px;
+        }
         .larges img{
             position: absolute;
-            /* display: none; */
             width:600px;
             height:454px;
         }
-        /* .larges img:first-child{
-            display: block;
-        } */
         .smalls a{
             float: left;
         }
         .smalls img{
             width:200px;
         }
-       /*点哪张图片切换到哪张*/
-       /* .larges img:target{
-            display: block;
-        } */
+       /*点哪张图片切换到哪张：提高元素的显示层级，只要是锚点元素就可比其它元素的显示层级更高*/
+       .larges img:target{
+           z-index:10 ;
+        }
     </style>
 </head>
 
