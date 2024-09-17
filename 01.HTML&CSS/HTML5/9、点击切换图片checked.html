@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击切换图片checked【多写多理解】</title>
+    <style>
+        img {
+            display: block;
+        }
+
+        .play-box {
+            width: 730px;
+            margin: 100px auto 0;
+        }
+
+        .larges {
+            height: 454px;
+        }
+
+        .larges img {
+            display: none;
+            width: 600px;
+            height: 454px;
+        }
+        .larges input:checked+img{
+            display: block;
+        }
+
+        .larges input{
+            display: none;
+        }
+
+        .smalls label {
+            float: left;
+        }
+
+        .smalls img {
+            width: 200px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="play-box">
+        <div class="larges">
+            <input checked type="radio" name="img" id="img01">
+            <img src="../picture/1.png" />
+            <input type="radio" name="img" id="img02">
+            <img src="../picture/2.png" />
+            <input type="radio" name="img" id="img03">
+            <img src="../picture/3.png" />
+        </div>
+        <div class="smalls">
+            <label for="img01">
+                <img src="../picture/1.png"/>
+            </label>
+            <label for="img02">
+                <img src="../picture/2.png"/>
+            </label>
+            <label for="img03">
+                <img src="../picture/3.png"/>
+            </label>
+        </div>
+    </div>
+</body>
+
+</html>
