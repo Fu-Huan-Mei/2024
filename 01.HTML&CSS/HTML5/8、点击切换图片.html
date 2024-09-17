@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击切换图片</title>
+    <style>
+        img{
+            display: block;
+        }
+        .play-box{
+            width:730px;
+            margin:100px auto 0;
+        }
+        .larges img{
+            position: absolute;
+            /* display: none; */
+            width:600px;
+            height:454px;
+        }
+        /* .larges img:first-child{
+            display: block;
+        } */
+        .smalls a{
+            float: left;
+        }
+        .smalls img{
+            width:200px;
+        }
+       /*点哪张图片切换到哪张*/
+       /* .larges img:target{
+            display: block;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="play-box">
+        <div class="larges">
+            <img src="../picture/1.png" id="img01" />
+            <img src="../picture/2.png" id="img02" />
+            <img src="../picture/3.png" id="img03" />
+        </div>
+        <div class="smalls">
+            <a href="#img01"><img src="../picture/1.png" id="img01" /></a>
+            <a href="#img02"><img src="../picture/2.png" id="img02" /></a>
+            <a href="#img03"><img src="../picture/3.png" id="img03" /></a>
+        </div>
+    </div>
+</body>
+
+</html>

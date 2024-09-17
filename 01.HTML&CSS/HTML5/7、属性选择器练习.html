@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器练习</title>
+    <style>
+        .downloads a {
+            background-image: url(../picture/1.png);
+            background-repeat: no-repeat;
+            background-position-x: right;
+            padding-right: 30px;
+            background-size: 20px;
+        }
+
+        .downloads a[href$=".com"] {
+            background-position-y: center;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="downloads">
+        <li><a href="../">美图</a></li>
+        <li><a href="https://www.baidu.com/">美景</a></li>
+        <li><a href="https://www.baidu.com/">美食</a></li>
+        <li><a href="https://www.baidu.com/">美物</a></li>
+        <li><a href="https://www.baidu.com/">美丽</a></li>
+        <li><a href="https://www.baidu.com/">魅力</a></li>
+        <li><a href="https://www.baidu.com/">梅利</a></li>
+    </ul>
+</body>
+
+</html>
