@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伸缩盒子</title>
+    <title>伸缩项目</title>
     <style>
         .wrapper{
             width:1000px;
             height:600px;
             margin:20px auto;
             background-color: #ccc;
-            /*flex inline-flex：是否独占一行*/
             display: flex;
-            /* display: inline-flex; */
-            flex-direction: row-reverse;
-            flex-wrap: wrap;/*自动换行*/
-            flex-wrap:nowrap;
-            flex-wrap: wrap-reverse;
-            /*同时设置主轴方向和换行方式*/
-            flex-flow: row-reverse;
+            /*设置伸缩项目在主轴上的对齐方式*/
+            /* justify-content: flex-start;/*默认值：开始方向对齐*/
+            /*justify-content: flex-end;主轴终点对齐*/
+            /* justify-content: center;
+            justify-content: space-between; */ 
+            /* justify-content: space-around; */
+            /* justify-content: space-evenly; */
+            align-items: stretch;
         }
         .item{
             width:220px;
-            height:100px;
+            /* height:100px; */
         }
         .item01{
             background-color: aqua;
