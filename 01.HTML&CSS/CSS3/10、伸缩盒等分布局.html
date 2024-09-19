@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩盒等分布局</title>
+    <style>
+        .row{
+            /*伸缩容器flex相当于块元素，默认宽度：父元素的宽度，即body宽度*/
+            display: flex;
+        }
+        .row a{
+            border:1px solid red;
+        }
+        .row a img{
+            width:20px;
+            height:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <a href="#">
+            <img src="../picture/1.png">
+            <span>点我</span>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <img src="../picture/1.png">
+            <span>点我</span>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <img src="../picture/1.png">
+            <span>点我</span>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <img src="../picture/1.png">
+            <span>点我</span>
+        </a>
+    </div>
+    <div class="row">
+        <a href="#">
+            <img src="../picture/1.png">
+            <span>点我</span>
+        </a>
+    </div>
+</body>
+</html>
