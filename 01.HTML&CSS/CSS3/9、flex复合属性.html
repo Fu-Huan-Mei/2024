@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*伸缩容器不设宽度，则是父元素宽度*/
+        .wrapper{
+            display: flex;
+            margin:20px auto;
+            background-color: antiquewhite;
+        }
+        .item{
+            width:100px;
+            height:50px;
+            /*视口变小后：最小宽度：取决于伸缩项目里的内容，不会把内容压缩没了*/
+            /*扩展比率是1（1：1：1瓜分父元素的富余空间即视口宽度）、收缩比率没有（因为还要剩余空间）、主轴方向长度为0*/
+            flex:1 1 0;
+            /*auto得看原始长度*/
+            flex:1 1 auto;
+            /*不伸也不收缩，看原来的长度（宽度）*/
+            flex:0 0 auto;
+            flex:0 1 auto;
+        }
+        .item01{
+           background-color: aqua;
+        }
+        .item02{
+            background-color: chartreuse;
+            order:1;
+        }
+        .item03{
+            background-color: blueviolet;
+            order:-10;
+        }
+    </style>
+</head>
+<body>
+   <div class="wrapper">
+    <div class="item item01">item01</div>
+    <div class="item item02">item02</div>
+    <div class="item item03">item03</div>
+   </div> 
+</body>
+</html>
