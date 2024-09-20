@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伸缩盒布局练习</title>
+    <style>
+        /*重置样式*/
+        *{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px;
+            margin:10;
+            padding:0;
+            border:0;
+        }
+        a{
+            text-decoration: none;
+        }
+        ul{
+            list-style: none;
+        }
+        html{
+            /*参照父元素的视口高度*/
+            height:100%;
+        }
+        img{
+            /*行内块元素：解决幽灵空白问题（基线对齐导致的）*/
+            /* display: block; */
+            vertical-align: bottom;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+             /*参照父元素html的高度*/
+            height: 100%;
+            background: url(../picture/bg.jpg) center/cover;
+        }
+        .page-header{
+            display: flex;
+            /*垂直居中*/
+            align-items: center;
+            /*左右布局*/
+            justify-content: space-between;
+            /*不伸也不缩*/
+            flex: 0 0 auto;
+            height:70px;
+            /*不会影响盒子的宽度：因为该元素的默认宽度都没有设置*/
+            padding:0 15px;
+            background-color: rgba(0,0,0,.7);
+        }
+        .page-nav{
+            /*相当于块元素*/
+            /*默认宽度：被内容撑开，因为该元素是伸缩项目
+            我想错了，我以为默认宽度是0，我一直想着是块元素，默认宽度等于父元素内容宽度*/
+            display: flex; 
+        }
+        .page-nav a{
+            margin-left:10px;
+            border-radius: 8px;
+            width:85px;
+            height:35px;
+            line-height: 35px;
+            text-align: center;
+            color:#fff;
+            border:1px solid #fff;
+        }
+        .page-main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*只伸不缩：主轴长度=父元素主轴长度100%-子元素主轴长度70px；则剩余主轴长度空间就被page-main给拉伸分配了*/
+            flex:1 1 0;
+            background-color: aqua;
+        }
+        .content-list{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width:1000px;
+            height:210px;
+        }
+        .content-list li{
+            text-align: center;
+            width:150px;
+        }
+        .content-list li img{
+            width:150px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <header class="page-header">
+        <!--左侧：logo图标-->
+        <a href="#" class="logo">
+            <img style="width:70px;border-radius: 50%;" src="../picture/1.png">
+        </a>
+        <!--右侧：导航条-->
+        <nav class="page-nav">
+            <a href="#">钱端</a>
+            <a href="#">钱端</a>
+            <a href="#">钱端</a>
+        </nav>
+    </header>
+    <main class="page-main">
+        <ul class="content-list">
+            <li>
+                <img src="../picture/1.png"/>
+                <h3>HTML</h3>
+            </li>
+            <li>
+                <img src="../picture/2.png"/>
+                <h3>HTML</h3>
+            </li>
+            <li>
+                <img src="../picture/3.png"/>
+                <h3>HTML</h3>
+            </li>
+            <li>
+                <img src="../picture/1.png"/>
+                <h3>HTML</h3>
+            </li>
+            <li>
+                <img src="../picture/2.png"/>
+                <h3>HTML</h3>
+            </li>
+            <li>
+                <img src="../picture/3.png"/>
+                <h3>HTML</h3>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
