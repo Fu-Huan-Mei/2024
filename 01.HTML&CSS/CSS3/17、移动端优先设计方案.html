@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动端优先：越小屏幕越优先</title>
+    <style>
+        /*最小屏幕 <768px    视口宽度100%
+        小屏幕    768~992    视口宽度750px 居中
+        中等屏幕  992~1200   视口宽度970px 居中
+        大屏幕    >1200      视口宽度1170px 居中*/
+        /*默认样式就是最小屏幕得样式*/
+        body{
+            margin:0;
+        }
+        .container{
+            width:100%;
+            height:200px;
+            background-color: burlywood;
+        }
+        /*小屏幕*/
+        @media (min-width:768px) {
+            .container{
+                width:750px;
+                background-color: blueviolet;
+                margin:0 auto;
+            }
+        }
+        /*中等屏幕*/
+        @media (min-width:992px) {
+            .container{
+                width:970px;
+                background-color: rgb(201, 198, 18);
+                margin:0 auto;
+            }
+        }
+        /*大屏幕*/
+        @media (min-width:1200px) {
+            .container{
+                width:1170px;
+                background-color: rgb(12, 154, 111);
+                margin:0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+    </div>
+</body>
+</html>
