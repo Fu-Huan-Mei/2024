@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多阴影</title>
+    <style>
+        body{
+            background-color: #999;
+        }
+        .box{
+            /*color是好多CSS属性的默认颜色 eg：边框、阴影*/
+            color: aqua;
+            margin-left:100px;
+            margin-top:20px;
+            width:400px;
+            height:100px;
+            padding:10px;
+            background-color: #fff;
+        }
+        .box05{
+            box-shadow: red 5px 0 5px,
+                        0 5px #080,
+                        yellow -5px 0,
+                        blueviolet 0 -5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box05"></div>
+</body>
+</html>
