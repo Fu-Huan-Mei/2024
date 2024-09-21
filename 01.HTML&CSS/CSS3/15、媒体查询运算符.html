@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒体查询运算符</title>
+    <style>
+        body{
+            background-color: blanchedalmond;
+            color: #333;
+        }
+
+        @media only screen {
+            
+        }
+        @media not screen {
+            body{
+                background-color: blueviolet;
+            }
+        }
+        @media (min-width:600px) and (max-width:800px) {
+            body{
+                background-color: coral;
+            }
+        }
+        @media (max-width:400px) , (min-width:1000px) {
+            body{
+                background-color:chartreuse;
+            }
+        }
+        @media only screen and (max-width:980px){
+            body{
+                background-color:gold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>媒体查询运算符</h2>
+</body>
+</html>
