@@ -2,11 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--设置完美视口：视口宽度即width=屏幕宽度即device-width，且不进行缩放即initial-scale=1.0-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>圣杯布局</title>
     <style>
+        body{
+            margin:0;
+        }
         .wrapper{
+            display: flex;
             height:600px;
+            text-align: center;
+            color:red;
+        }
+        .left{
+            /*不伸也不缩*/
+            flex:0 0 auto;
+            width:200px;
+            background-color: aqua;
+        }
+        .right{
+            flex:0 0 auto;
+            width:200px;
+            background-color:blueviolet;
+        }
+        .content{
+            /*伸展撑开绳索容器父元素的剩余空间*/
+            flex:1 1 0;
+            background-color: #ccc;
         }
     </style>
 </head>
