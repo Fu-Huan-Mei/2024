@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>盒子阴影</title>
+    <style>
+        body{
+            background-color: #999;
+        }
+        .box{
+            /*color是好多CSS属性的默认颜色 eg：边框、阴影*/
+            color: aqua;
+            margin-left:100px;
+            margin-top:20px;
+            width:400px;
+            height:100px;
+            padding:10px;
+            background-color: blueviolet;
+        }
+        .box01{
+            /*设置阴影偏移位置：x方向（正值向右） y方向（正值向下）*/
+            box-shadow: 10px 10px;
+            /*设置阴影偏移位置：x方向 y方向 颜色*/
+            box-shadow: 10px 10px yellow;
+             /*不允许使用百分比*/
+            /* box-shadow:10% 50% orange ; */
+        }
+        .box02{
+            /*设置阴影偏移位置：颜色 x方向 y方向  模糊值*/
+            box-shadow: orange 10px 10px 10px;
+            /*阴影不偏移，靠模糊值（稀释）向四周扩展*/
+            /* box-shadow: orange 0px 0px 10px; */
+        }
+        .box03{
+            /*设置阴影偏移位置：颜色 x方向 y方向  模糊值（稀释） 外延值（放大）*/
+            box-shadow: orange 10px 10px 10px 10px;
+        }
+        .box04{
+            /*设置阴影偏移位置：颜色 x方向 y方向  模糊值（稀释） 外延值（放大） 内延值*/
+            box-shadow: greenyellow -10px -10px inset;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="box box01"></div>
+    <div class="box box02"></div>
+    <div class="box box03"></div>
+    <div class="box box04"></div>
+    
+</body>
+</html>

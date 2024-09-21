@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BFC-解决子元素浮动问题</title>
     <style>
-        /* body{
+        body{
             display: flex;
             flex-wrap: wrap;
-        } */
+        }
         .wrapper {
             width: 1000px;
             border: 4px dashed #09a5b3;
@@ -21,18 +21,18 @@
             /* display: table-cell; */
             /* overflow: scroll; */
             /* column-count: 1; */
-            column-span: all;
+            /* column-span: all; */
         }
 
         .box {
-            float: left;
-            margin: 10px;
+            margin:20px;
             padding: 20px;
             width: 200px;
             background-color: blanchedalmond;
         }
 
         p {
+            margin:0;
             padding: 20px;
             width: 800px;
             background-color: chocolate;
@@ -41,6 +41,7 @@
 </head>
 
 <body>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae consequuntur incidunt possimus tempora repellat assumenda! Mollitia rem laborum aspernatur voluptatibus. Id saepe excepturi aperiam dignissimos voluptas ut rem, accusamus nulla.</p>
     <div class="wrapper">
         <div class="box">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste exercitationem laborum accusamus veritatis
