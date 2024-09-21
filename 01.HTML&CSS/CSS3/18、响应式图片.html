@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式页面案例</title>
+    <style>
+        /*重置样式*/
+        * {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            /*行内块元素：解决幽灵空白问题（基线对齐导致的）*/
+            display: block;
+        }
+
+        html{
+            width:100%;
+        }
+        /*全局样式*/
+        body {
+            width:100%;
+            background-color: #efefef;
+        }
+
+        /*全局样式*/
+
+        .page-header {
+            position: relative;
+            display: flex;
+            height: 40px;
+            padding: 8px 0 15px;
+            background-color: #88c5e1;
+            border-bottom: 5px solid #54abd4;
+        }
+
+        .logo {
+            width: 25%;
+            background-image: url(../picture/1.png);
+            background-size: auto 40px;
+            /*宽高*/
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* .logo img{
+            height:40px;
+           
+            margin:0 auto;
+        } */
+        .search-box {
+            display: flex;
+            width: 60%;
+        }
+
+        .search-box input {
+            box-sizing: border-box;
+            height: 40px;
+            width: 80%;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+
+        .search-box button {
+            width: 20%;
+            height: 40px;
+            border: 1px solid #ccc;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .page-nav {
+            display: flex;
+            width: 15%;
+        }
+
+        /*伸缩项目：默认宽高被内容撑开*/
+        .menu-btn {
+            margin: auto;
+            padding: 9px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .menu-btn span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background-color: #888;
+        }
+
+        .menu-btn span:not(:last-child) {
+            margin-bottom: 5px;
+        }
+
+        .nav-list {
+            /*方案1：元素消失：但无法设置元素的过渡效果*/
+            /* display: none; */
+            /*方案2：但里面内容溢出*/
+            height: 0;
+            /*溢出部分隐藏*/
+            overflow: hidden;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 68px;
+            background-color: #88c5e1;
+            transition: 600ms;
+            /*不是什么属性都可加过渡噢 eg：display*/
+        }
+
+        .nav-list li {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .nav-list li a {
+            color: #fff;
+            font-size: 12px;
+        }
+
+        .menu-btn:active+.nav-list {
+            /* display: block; */
+            height: 160px;
+        }
+
+        .banner img {
+            /*如果不设置宽度，小屏幕下图片可能会溢出*/
+            width: 100%;
+        }
+
+        .course {
+            width: 100%;
+        }
+
+        .course-item {
+            box-sizing: border-box;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .course-item img {
+            width: 100%;
+        }
+
+        .course-item-des {
+            padding: 20px 0;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .course-item-des h3 {
+            font-size: 1.5em;
+        }
+
+        @media (min-width:640px) {
+            .logo {
+                background-size: auto 50px;
+                /*宽高*/
+            }
+
+            .search-box {
+                width: 50%;
+            }
+
+            .page-nav {
+                width: 25%;
+            }
+
+            .menu-btn {
+                display: none;
+            }
+
+            .nav-list {
+                /*这个地方比较难理解？多理解！！！*/
+                display: flex;
+                /*给元素设置static，会覆盖*/
+                position: static;
+                width: 100%;
+                height: 40px;
+                /*为什么设了高度为40，只会显示一个元素了？*/
+            }
+
+            .nav-list li {
+                flex: 1 1 0;
+            }
+        }
+
+        /*媒体查询也会触发过渡：不用解决这个问题，因为用户用什么设备打开视口就是多大*/
+        @media (min-width:1024px) {
+            .logo {
+                background-size: auto 60px;
+                /*宽高*/
+            }
+        }
+
+        @media (min-width:640px) {
+            .course ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .course-item {
+                width: 50%;
+            }
+        }
+
+        @media (min-width:1024px) {
+            /*设置版心*/
+            .course {
+               max-width: 1200px;
+               margin:0 auto;
+            }
+
+            .course-item {
+                width: 25%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="page-header">
+        <a href="#" class="logo">
+            <!--响应式图片方案1-->
+            <!-- <img src="../picture/1.png" alt="logo"/>
+             -->
+        </a>
+        <form action="#" class="search-box">
+            <input type="text" name="" id="">
+            <button>搜索</button>
+        </form>
+        <!--下拉菜单-->
+        <nav class="page-nav">
+            <button class="menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-list">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">首页</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="banner">
+        <!--方案三：从上到下执行，满足条件加载图片，后面不再执行-->
+        <!--哪个source先满足条件就先加载哪个图片，后面的将不再加载-->
+        <!-- <picture>
+            <source srcset="../picture/1.png" media="(min-width:1024px)"/>
+            <source srcset="../picture/2.png" media="(min-width:640px)"/>
+            <img src="../picture/3.png"/>
+        </picture> -->
+        <!--方案4：前提：img的宽度设了100%-->
+        <img srcset="
+        ../picture/1.png 640w,
+        ../picture/2.png 1024w,
+        ../picture/3.png 1440w" src="../picture/3.png">
+
+    </div>
+    <!--课程列表-->
+    <div class="course">
+        <ul>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/1.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/2.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/3.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/3.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/1.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/2.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+                <div class="course-item-inner">
+                    <img src="../picture/3.png" alt="" srcset="">
+                    <div class="course-item-des">
+                        <h3>HTML</h3>
+                    </div>
+                </div>
+            </li>
+            <li class="course-item">
+            <div class="course-item-inner">
+                <img src="../picture/3.png" alt="" srcset="">
+                <div class="course-item-des">
+                    <h3>HTML</h3>
+                </div>
+            </div>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
