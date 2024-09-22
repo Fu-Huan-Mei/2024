@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渐变文字</title>
+    <style>
+        .box {
+            font-weight: 900;
+            font-size: 100px;
+            text-align: center;
+            line-height: 300px;
+            /*1、字体一定要透明渐变文字才可设置成功！*/
+            color: rgba(0, 0, 0, 0);
+            /*2、浏览器更好的兼容性*/
+            -webkit-background-clip: text;
+            background-clip: text;
+
+        }
+
+        .box01 {
+            background-image: linear-gradient(yellow, orange);
+        }
+
+        .box02 {
+            background-image: linear-gradient(0deg,yellow 50%,orange 50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box01">
+        为中华之崛起而读书1
+    </div>
+
+    <div class="box box02">
+        为中华之崛起而读书2
+    </div>
+</body>
+
+</html>

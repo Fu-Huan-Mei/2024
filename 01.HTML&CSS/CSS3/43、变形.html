@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变形</title>
+    <style>
+        .wrapper {
+            width: 300px;
+            height: 100px;
+            border: 4px dashed #900;
+            margin-bottom: 50px;
+        }
+
+        .box {
+            background-color: blueviolet;
+            box-sizing: border-box;
+            padding: 20px;
+            width: 300px;
+            height: 100px;
+            
+        }
+
+        .box01 {
+            /*X方向位移*/
+            transform: translateX(100px);
+            /*百分比：参照自己宽度*/
+            transform: translateX(50%);
+            /*左移*/
+            transform: translateX(-10px);
+            
+        }
+
+        .box02 {
+            /*Y方向位移*/
+            transform: translateY(100px);
+            /*百分比：参照自己的高度*/
+            transform: translateY(50%);
+            /*上移*/
+            transform: translateY(-10px);
+        }
+        .box03{
+            /*X Y方向同时位移：右下*/
+            transform: translate(200px,100px);
+            /*X Y方向同时位移：右上*/
+            transform: translate(200px,-100px);
+            /*如果只设置1个：则只设置X方向的位移*/
+            transform: translate(30px);
+        }
+
+        p{
+            width:500px;
+            height:300px;
+            background-color:blanchedalmond;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>2D位移：类似于相对定位</h2>
+    <div class="wrapper">
+        <div class="box box01">box01</div>
+    </div>
+    <div class="wrapper">
+        <div class="box box02">box02</div>
+    </div>
+    <div class="wrapper">
+        <div class="box box03">box03</div>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure vitae deserunt tenetur, voluptates sapiente possimus cum dolor alias non perspiciatis ea repudiandae sit minima! Hic inventore ipsum quia aspernatur libero!</p>
+</body>
+
+</html>
