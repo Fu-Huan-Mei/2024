@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定位元素居中</title>
+    <style>
+        .box{
+            width:400px;
+            padding:20px;
+            color:#fff;
+            background-color: rgb(57, 7, 221);
+        
+            position: fixed;
+            /* 方案1：问题：不知道高度，无法给margin-top设置为元素高度的一半 */
+            /* left:50%;
+            top:50%;
+            margin-left:-220px; */
+            /*问题：如果元素没有设置高度，那么纵向外边距应该设置多少呢？*/
+            /* margin-top:-100px; */
+            
+            /* 方案2：因为元素没有高度，所以设置了top和bottom都为0后，会在页面纵向拉伸沾满整个屏幕 */
+            /*left:0;
+            top:0;
+            right:0;
+            bottom:0;
+            margin:auto; */
+            /*为什么margin-top和margin-left不能使用50%？因为参照物是父元素*/
+            /* margin-left:50%; */
+
+            /* 方案3：水平垂直双方向居中：transform: translate(-50%,-50%);参照自身*/
+            left:50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum commodi assumenda deleniti totam eveniet, odit placeat earum neque unde nihil accusamus tenetur, voluptatum repudiandae corrupti odio doloribus, beatae impedit? Officia?
+    </div>
+</body>
+</html>
