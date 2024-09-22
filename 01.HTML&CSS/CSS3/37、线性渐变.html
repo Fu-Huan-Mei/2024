@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线性渐变</title>
+    <style>
+        .box{
+            width:800px;
+            color:#fff;
+            border:1px solid #ccc;
+            background-color: antiquewhite;
+        }
+        .box01{
+            /*最少需要两个颜色*/
+            /* background-image: linear-gradient(#1e9324,#d7671c); */
+            
+            /*设置渐变方向：使用关键字设置渐变方向*/
+            background-image: linear-gradient(to top,rgb(89, 32, 236), green);
+            background-image: linear-gradient(to right,rgb(89, 32, 236), green);
+            background-image: linear-gradient(to right bottom,rgb(89,32,236),green);
+        
+            /*设置渐变方向：使用角度设置渐变方向：顺时针转*/
+            background-image: linear-gradient(0deg,yellow,rgb(232, 139, 201));
+            background-image: linear-gradient(180deg,yellow,rgb(232, 139, 201));
+            margin-bottom:100px;
+        }
+
+        .box02{
+            background-image: linear-gradient(90deg,rgb(151, 58, 182),rgb(60, 206, 60));
+            background-image: linear-gradient(90deg,rgb(151, 58, 182) 100px,rgb(60,206,60) 200px);
+            background-image: linear-gradient(90deg,rgb(151, 58, 182) 40%,rgb(60,206,60) 60%);
+            /*泾渭分明的颜色*/
+            background-image: linear-gradient(0deg,rgb(151, 58, 182) 50%,rgb(60,206,60) 50%);
+            margin-bottom:100px;
+        }
+
+        .box03{
+            background-image: linear-gradient(45deg,#900,#990,#099,#909,#009);
+            background-image: linear-gradient(90deg,#900 20%,#990 20%,#099 40%,#909 40%,#009 60%,#088 60%,#007 80%,#666 80%,#100);
+        }
+    </style>
+</head>
+<body>
+    <div class="box box01">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, fugit suscipit ipsum libero obcaecati maxime tempore reiciendis est sequi. Numquam odio aut cupiditate magni! Quis temporibus aliquam veniam quos mollitia.
+    </div>
+    <div class="box box02">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque commodi amet eius, facilis maiores labore enim quisquam deserunt, ipsa soluta voluptatum minima? Iste placeat at quidem beatae nobis veniam tenetur.
+    </div>
+    <div class="box box03">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorum ex, nam cumque doloremque accusamus ipsum consectetur quisquam maiores reiciendis dolorem. Iure sint in fuga excepturi voluptatem molestias autem inventore aut?
+    </div>
+</body>
+</html>
