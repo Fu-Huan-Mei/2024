@@ -19,7 +19,18 @@
             background-origin:border-box ;
             background-origin: padding-box;
             background-origin: content-box;
+            -webkit-background-clip: text;
             
+        }
+        .text-box{
+            font-size: 200px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 500px;
+            background-image: url(../picture/1.png);
+            background-position: center;
+            -webkit-background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
@@ -27,6 +38,9 @@
     <h1>background-origin</h1>
     <div class="box">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Molestiae sapiente, tempore, maiores consectetur rem odit nisi laborum non cum architecto iste modi iusto doloribus, esse nemo qui officiis quo fugit.
+    </div>
+    <div class="text-box">
+        越努力
     </div>
 </body>
 </html>

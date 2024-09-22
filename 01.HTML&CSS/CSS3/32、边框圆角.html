@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>边框圆角</title>
+    <style>
+        .box{
+            width:400px;
+            height:100px;
+            /* border:2px solid #900; */
+            padding:20px;
+            background-color: #ccc;
+        }
+        /*单个圆角属性*/
+        .box01{
+            /*右上角圆角：圆角半径值*/
+            border-top-right-radius: 10px;
+            /*椭圆圆角*/
+            border-bottom-right-radius: 10px 20px;
+            /*使用百分比*/
+            border-bottom-left-radius:10% 50%;
+            border-bottom-left-radius:50%;
+        }
+        /*复合属性*/
+        .box02{
+            /*同时设置4个角*/
+            border-radius: 20px;
+            /*对角线对齐：左上和右下 左下和右上*/
+            border-radius: 10px 100px;
+            /*左上 左下和右上 右下*/
+            border-radius: 10px 100px 50px;
+            /*顺时针方向：左上 右上 右下 左下*/
+            border-radius: 10px 100px 50px 80px;
+        }
+        .box03{
+            /*同时设置4个圆角：x半径/y半径*/
+            border-radius: 100px/10px;
+            /*左下：100px 10px;右上：30px 40px;右下：100px 50px；左下：30px 40px;*/
+            border-radius: 100px 30px/10px 40px 50px;
+        }
+        /*圆形*/
+        .box04{
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box box01">box01</div>
+    <div class="box box02">box02</div>
+    <div class="box box03"></div>
+    <div class="box box04"></div>
+</body>
+</html>

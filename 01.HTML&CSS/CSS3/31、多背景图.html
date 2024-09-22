@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多背景图</title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 600px;
+            padding: 20px;
+
+            /* background-color: #ccc;
+            background-position: left top,right top;
+            background-repeat: no-repeat;
+            background-image: url(../images/bg-tl【微信：itcodeba\ 】.png),url(../images/bg-tr【微信：itcodeba\ 】.png); */
+
+            /*注意：如果位置有重合，先写的背景图会显示在上层*/
+            background: url(../images/bg-tl【微信：itcodeba\ 】.png) no-repeat left top,
+                url(../images/bg-tr【微信：itcodeba\ 】.png) no-repeat right top,
+                url(../images/bg-bl【微信：itcodeba\ 】.png) no-repeat left bottom,
+                url(../images/bg-br【微信：itcodeba\ 】.png) no-repeat right bottom,
+                url(../picture/1.png) center/cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

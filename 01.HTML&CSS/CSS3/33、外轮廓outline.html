@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外轮廓</title>
+    <style>
+        .box{
+            width:600px;
+            height:200px;
+            background-color: #ccc;
+            border:10px darkviolet dotted;
+
+            outline-style:dashed;
+            outline-width: 10px;
+            outline-color: aqua;
+            outline:5px deepskyblue solid;
+
+            /*设置outline与border的距离*/
+            outline-offset:5px ;
+            /* outline-offset:-10px ; */
+        }
+        p{
+            width:600px;
+            padding:20px;
+            background-color: bisque;
+        }
+        input{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam dicta dolore aspernatur ratione consectetur quis sapiente pariatur. Vel voluptas sequi repudiandae modi maxime quas repellendus, mollitia voluptatem labore at provident.
+    </div>
+    <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Alias, in. Illum reprehenderit atque voluptatem a labore, eveniet alias quae minus dicta, temporibus autem, numquam dolores itaque ullam quia nesciunt rem?
+    </p>
+    <input type="text" name="" id="">
+</body>
+</html>
