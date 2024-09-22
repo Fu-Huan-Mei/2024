@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>没懂？？？</title>
+    <style>
+        img {
+            display: block;
+        }
+
+        .box {
+            width: 730px;
+            margin: 100px auto 0;
+        }
+
+        .large {
+            height: 454px;
+        }
+
+       
+        .large img {
+            display: none;
+            width: 730px;
+            height: 454px;
+        }
+      
+        .large input{
+            display: none;
+        }
+
+       /*选中大图下的单选框时：显示图片*/
+        .large input:checked + img{
+            display: block;
+        }
+        
+
+        .small label {
+            float: left;
+            /*浮动元素宽度：宽度被内容撑开*/
+        }
+
+        .small img {
+            width: 146px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="large">
+            <!--默认显示第一张图片-->
+            <input checked type="radio" name="img" id="img01">
+            <img src="../picture/1.png" id="img01" alt="" srcset="">
+            <input type="radio" name="img" id="img02">
+            <img src="../picture/2.png" id="img02" alt="" srcset="">
+            <input type="radio" name="img" id="img03">
+            <img src="../picture/3.png" id="img03" alt="" srcset="">
+            <input type="radio" name="img" id="img04">
+            <img src="../picture/1.png" id="img04" alt="" srcset="">
+            <input type="radio" name="img" id="img05">
+            <img src="../picture/2.png" id="img05" alt="" srcset="">
+        </div>
+        <div class="small">
+            <label for="img01"><img src="../picture/1.png" alt="" srcset=""></label>
+            <label for="img02"><img src="../picture/2.png" alt="" srcset=""></label>
+            <label for="img03"><img src="../picture/3.png" alt="" srcset=""></label>
+            <label for="img04"><img src="../picture/1.png" alt="" srcset=""></label>
+            <label for="img05"><img src="../picture/2.png" alt="" srcset=""></label>
+        </div>
+    </div>
+</body>
+
+</html>

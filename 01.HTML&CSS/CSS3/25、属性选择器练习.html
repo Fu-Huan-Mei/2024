@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>属性选择器练习</title>
+    <style>
+        .box a{
+            /*问题：设置了背景图像置右边，页面上出现问题：要么背景图片重叠在文字上，要么背景图片看不清*/
+            background-position-x: right;
+            /*解决：巧妙使用右内边距*/
+            padding-right: 30px;
+            background-image: url(../picture/1.png);
+            background-repeat: no-repeat;
+            background-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="box">
+        <li><a href="https://www.baidu.com/">点我</a></li>
+        <li><a href="https://www.baidu.com/">点我</a></li>
+        <li><a href="https://www.baidu.com/">点我</a></li>
+    </ul>
+</body>
+</html>
