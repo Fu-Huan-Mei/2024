@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重复渐变</title>
+    <style>
+        .box{
+            width:600px;
+            height:1000px;
+            padding:20px;
+            border:1px solid #ccc;
+            margin:20px auto;
+            box-shadow: 0 0 10px #999;
+
+            /*重复渐变：*/
+            background-image: repeating-linear-gradient(#fff 0,#fff 29px,#000 30px);
+            background-origin: content-box;
+            background-clip: content-box;
+        }
+        .box p{
+            margin:30px 0;
+            text-indent: 2em;
+            line-height:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, exercitationem repellendus! Eveniet error, fugit sit aliquam alias tenetur voluptatem eligendi quos. Inventore dolores pariatur odit temporibus! At voluptatem vero reprehenderit.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est officia expedita magni distinctio alias aliquam corrupti quibusdam debitis? Magnam quam possimus maxime quis officia ipsum consequuntur vel cum velit consectetur?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quia, exercitationem at veniam, ex harum eaque magnam id esse aperiam, quisquam dolor officiis blanditiis modi quaerat molestiae nemo aliquam. Repellendus.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web字体的使用</title>
+    <style>
+        /*1、定义并引入字体*/
+        @font-face {
+            /*字体名字*/
+            font-family: "FHM";
+            /*字体文件地址*/
+            src: url("../sources/fonts/FZSJ-WSMQSJW.woff2") format("woff2"),
+                url("../sources/fonts/FZSJ-WSMQSJW.woff") format("woff"),
+                url("../sources/fonts/FZSJ-WSMQSJW.ttf") format("truetype"),
+                url("../sources/fonts/FZSJ-WSMQSJW.eot") format("embedded-opentype"),
+                url("../sources/fonts/FZSJ-WSMQSJW.svg") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+        @font-face {
+            font-family: "阿里妈妈刀隶体 Regular";
+            font-weight: 400;
+            src: url("http://at.alicdn.com/wf/webfont/itVOAUwMnHJu/rDodhmeWSExG.woff2") format("woff2"),
+                 url("http://at.alicdn.com/wf/webfont/itVOAUwMnHJu/pgaXg1cHEgVT.woff") format("woff");
+            font-display: swap;
+        }
+ 
+
+        .box {
+            width: 600px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            /*2、使用字体*/
+            font-family: FHM;
+
+        }
+
+        .p {
+            width: 600px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            font-family: "阿里妈妈刀隶体 Regular";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque culpa commodi beatae sapiente aspernatur
+        tenetur, itaque quibusdam. Fugit assumenda, error delectus cum beatae autem provident totam. Id dolores optio
+        dolor.
+        我在杂乱的、破旧的村庄寂寞地走过漫长的雨季，将我年少的眼光从晦暗的日子里打捞出来的是一棵棵开花的树，它们以一串串卓然不俗的花擦明了我的眼睛，也洗净了我的灵魂。
+
+        我在书本垒砌的阶梯上爬行，一棵棵开花的树站立成我精神的守望者。
+
+        当我把目光从城市的名利枷锁里收回，投入大自然的一棵自由开花的树，一棵开花的树的精神正注入我的思想，我的目光有了阳光和绿色可以停留，有了自由呼吸的纯净空气，我脱离了低俗的生活，我的目光和灵魂渐渐变得宽广和清澈。
+
+    </div>
+    <div class="p">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero, minima exercitationem nisi doloremque ut qui illo
+        maxime, facilis sequi libero ad tempora corrupti voluptas nobis dignissimos necessitatibus, iusto dolores harum.
+    </div>
+</body>
+
+</html>
