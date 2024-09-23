@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D位移</title>
+    <style>
+        .box{
+            margin:20px auto;
+            width:300px;
+            height:100px;
+            border:10px dotted darkviolet;
+            /*设置子元素处于3D空间*/
+            transform-style: preserve-3d;
+            /*（观察者距离）透视距离：近大远小*/
+            perspective: 1000px;
+        }
+        .box01{
+            width:300px;
+            height:100px;
+            background-color: aqua;
+            /*沿X轴旋转*/
+            transform: rotateX(45deg);
+            /*沿Y轴旋转*/
+            transform: rotateY(60deg);
+            /*沿多轴旋转，所有轴一起转：1表示要转、0表示不转，角度统一*/
+            /* 只有X和Y旋转，Z不旋转 */
+            transform: rotate3D(1,1,0,45deg);
+            transform: rotateZ(1,1,0,45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="box01">3D旋转</div>
+    </div>
+</body>
+</html>
