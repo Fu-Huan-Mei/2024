@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D变换其他样式设置</title>
+    <style>
+        
+        .wrapper{
+            margin:100px auto;
+            width:500px;
+            height:500px;
+            border:10px dotted blueviolet;
+            /* 开启3D空间 */
+            transform-style: preserve-3d;
+            /* 设置观察距离（透视距离） */
+            perspective: 500px;
+            /* 设置观察者位置：观察者在左上角位置进行观察，观察者位置都是在元素本身上 */
+            perspective-origin: left top;
+        }
+
+        .wrapper img{
+            display: block;
+            width:500px;
+            height:500px;  
+            
+            transform: rotateY(270deg);
+            transform-origin: left;
+            /* 设置元素背面不可见 */
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <img src="../picture/1.png">
+    </div>
+</body>
+</html>
