@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多种变换的案例</title>
+    <style>
+        .box{
+            position: fixed;
+            left:50%;
+            top:50%;
+            /*先位移再旋转*/
+            transform: translate(-50%,-50%) rotate(45deg);
+            /* 先旋转再位移 ：说明X和Y轴发生变化，那位移就会沿着现有X和Y轴进行移动，位置就错了！！*/
+            width:200px;
+            height:200px;
+            line-height: 200px;
+            background-color: red;
+            text-align: center;
+            font-family: "楷体";
+            font-size: 120px;
+        }
+        .box span{
+            display: block;/*行内元素设置变换无效*/
+            transform: rotate(135deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <span>福</span>
+    </div>
+</body>
+</html>
