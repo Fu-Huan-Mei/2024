@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡运动曲线</title>
+    <style>
+        .wrapper{
+            width:1000px;
+            /* height:400px; */
+            border:10px solid #900;
+        }
+        .ball{
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            transition-duration: 5s;
+        }
+        .ball01{
+            /* 设置匀速运动 */
+            transition-timing-function: linear;
+            background:radial-gradient(at 40% 40%,#fff,orange);
+        }
+        .ball02{
+            /*默认值：先加速后减速*/
+            background: radial-gradient(at 40% 40%,#fff,yellow);
+        }
+        .ball03{
+            /* 加速运动 */
+            transition-timing-function: ease-in;
+            background:radial-gradient(at 40% 40%,#fff,orange);
+        }
+        .ball04{
+            /* 减速运动 */
+            transition-timing-function: ease-out;
+            background:radial-gradient(at 40% 40%,#fff,orange);
+        }
+        .ball05{
+            /* 先加速后减速 */
+            transition-timing-function: ease-in-out;
+            background:radial-gradient(at 40% 40%,#fff,orange);
+        }
+        .wrapper:hover .ball{
+            margin-left: 900px;
+            transform: rotate(3600deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="ball ball01">ball01</div>
+        <div class="ball ball02">ball02</div>
+        <div class="ball ball03">ball03</div>
+        <div class="ball ball04">ball04</div>
+        <div class="ball ball05">ball05</div>
+    </div>
+    </div>
+</body>
+</html>

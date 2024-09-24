@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡</title>
+    <style>
+        .box{
+            width:600px;
+            height:200px;
+            padding:20px;
+            color:#fff;
+            background-color: blueviolet;
+            /* 为什么鼠标离开时元素会过渡缓慢变回原来样式？ 
+            因为.box选择器一直存在，transition-duration: 3000ms;这个过渡效果一直都存在*/
+            /*过渡持续时间*/
+            transition-duration: 3000ms;
+            /*过渡延迟时间*/
+            transition-delay: 2s;
+            transition-delay: 0s;
+            border:10px darkorchid dotted;
+            /* 设置可过渡属性 */
+            transition-property: width,height,filter;
+
+        }
+
+        /*鼠标悬停：元素发生变化*/
+        .box:hover{
+            filter: blur(0.5px);
+            transform: translateX(30px);
+            width:200px;
+            height:100px;
+            background-color: chartreuse;
+            border-radius: 20px;
+            font-style: italic;
+            text-decoration: line-through rebeccapurple;
+            /* 为什么鼠标离开时元素会快速变回原来样式？因为.box:hover是伪类选择器，
+            该选择器只有用户hover在元素上时才会有这个tansition过渡属性，才会有过度变化，
+            所以鼠标离开时因为选择器消失了，声明块里的属性也自然消失了 */
+            /* transition-duration: 3000ms; */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit officiis praesentium, libero, delectus nihil debitis pariatur accusamus placeat enim molestiae doloremque repellat inventore, soluta quibusdam sapiente error modi harum esse?
+    </div>
+</body>
+</html>
