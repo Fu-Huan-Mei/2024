@@ -33,11 +33,14 @@
         .ball04{
             /* 减速运动 */
             transition-timing-function: ease-out;
+            transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
             background:radial-gradient(at 40% 40%,#fff,orange);
         }
         .ball05{
             /* 先加速后减速 */
             transition-timing-function: ease-in-out;
+            /* 分步运动：默认1s结束后变化，start在1s开始时发生变化*/
+            transition-timing-function: steps(5,end);
             background:radial-gradient(at 40% 40%,#fff,orange);
         }
         .wrapper:hover .ball{
