@@ -12,3 +12,9 @@ console.log(num03);
 var num04;
 console.log(num04);//undefined
 // console.log(a);
+//小驼峰
+var handleClick = "哈哈哈";
+var myHome = "云南";
+console.log(myHome);//云南
+//大驼峰
+
