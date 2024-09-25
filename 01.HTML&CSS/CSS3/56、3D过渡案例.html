@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D过渡案例</title>
+    <style>
+     
+        .wrapper{
+            margin:100px auto;
+            width:354px;
+            height:501px;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .item{
+            position: relative;
+            width:354px;
+            height:501px;
+            transform: rotateY(48deg);
+            transform-style: preserve-3d;
+        }
+        .item img{
+            position: absolute;
+            left: 0;
+            top:0;
+            display: block;
+            width:354px;
+            height:501px;
+        }
+        .front{
+            transform: translateZ(-1px) rotateY('30deg');
+        }
+        /* .back{
+            opacity: .5;
+        } */
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item">
+            <img class="front" src="../image/about1【微信：itcodeba 】.jpg" alt="花色" srcset="">
+            <img class="back" src="../image/about2【微信：itcodeba 】.jpg" alt="风景" srcset="">
+        </div>
+    </div>
+</body>
+</html>
