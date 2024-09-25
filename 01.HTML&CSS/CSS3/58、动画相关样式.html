@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画相关样式</title>
+    <style>
+        @keyframes ballScroll {
+            0%{
+                background-image: radial-gradient(at 40% 40%,#fff yellow);
+            }
+            100%{
+                
+                transform: translateX(900px) rotate(7200deg);
+                background-image: radial-gradient(at 40% 40%,#fff orange);
+            }
+        }
+            
+        .wrapper{
+            width:1000px;
+            height:100px;
+            border:10px solid rebeccapurple;
+        }
+        .ball{
+            background-color: aqua;
+            width:100px;
+            height:100px;
+            border-radius: 50%;
+            /*设置关键帧*/
+            animation-name: ballScroll;
+            animation-duration: 10s;
+            animation-delay: 1s;
+            animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            animation-direction: reverse;
+            animation-direction: alternate-reverse;
+            animation-fill-mode: ;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="ball"></div>
+    </div>
+</body>
+</html>

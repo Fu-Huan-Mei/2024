@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关键帧</title>
+    <style>
+        @keyframes start{
+            /*起始帧*/
+            from{
+                border-radius: 10px;
+            }
+            /*结束帧*/
+            to{
+                border-radius: 50%;
+            }
+        }
+        @keyframes animation{
+            /*起始帧:   样式如果和元素相同，则不用写了*/
+            /*结束帧*/
+            100%{
+                height:200px;
+            }
+        }
+        .box{
+            width:200px;
+            height:100px;
+            background-color: aqua;
+            /* 设置关键帧 */
+            animation-name: start,animation;
+            animation-duration: 3s;
+        }
+        p{
+            width:200px;
+            height:100px;
+            background-color: aqua;
+            /* 设置关键帧 */
+            animation-name: start,animation;
+            animation-duration: 10s;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos, architecto. Porro maiores dolorem maxime quis nemo voluptatum, non at itaque nesciunt esse sequi eum rem tempore! Officia rem assumenda harum!</p>
+</body>
+</html>
