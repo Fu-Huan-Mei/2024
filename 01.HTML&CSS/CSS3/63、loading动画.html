@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loading动画</title>
+    <style>
+        @keyframes jump{
+            100%{
+                transform: translateY(-10px);
+            }
+        }
+        .loading-box{
+            font-size: 100px;
+            font-weight: 800;
+            text-align: center;
+        }
+        .loading-box span{
+            /* 行内元素不能设置transform样式 */
+            display: inline-block;
+            animation: jump 1000ms;
+            animation-iteration-count: infinite;
+           animation-direction: alternate;
+        }
+        .loading-box span:nth-child(1){
+            animation-delay: 0ms;
+        }
+        .loading-box span:nth-child(2){
+            animation-delay: 100ms;
+        }
+        .loading-box span:nth-child(3){
+            animation-delay: 200ms;
+        }
+        .loading-box span:nth-child(4){
+            animation-delay: 300ms;
+        }
+        .loading-box span:nth-child(5){
+            animation-delay: 400ms;
+        }
+        .loading-box span:nth-child(6){
+            animation-delay: 500ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-box">
+        <span>G</span>
+        <span>O</span>
+        <span>O</span>
+        <span>G</span>
+        <span>L</span>
+        <span>E</span>
+    </div>
+</body>
+</html>

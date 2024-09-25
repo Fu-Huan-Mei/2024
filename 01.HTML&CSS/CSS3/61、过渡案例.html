@@ -3,9 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>过渡案例</title>
+    <style>
+        .item{
+            position: relative;
+            margin:20px auto;
+            width:300px;
+            height:200px;
+            border:5px solid #ccc;
+            border-radius: 8px;
+        }
+        .item img{
+            display: block;
+        }
+        .mask{
+            position: absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            top:0;
+
+        }
+        .mask-item{
+            position: relative;
+            float: left;
+            width:150px;
+            height:100px;
+            overflow: hidden;
+        }
+        .mask-item img{
+            position: absolute;
+            transition: 600ms;
+        }
+        .item01 img{
+            left:0;
+            top:0;
+        }
+        .item02 img{
+            right:0;
+            top:0;
+        }
+        .item03 img{
+            left:0;
+            bottom:0;
+        }
+        .item04 img{
+            right:0;
+            bottom:0;
+        }
+        .item:hover .item01 img{
+            top:100%;
+        }
+        .item:hover .item02 img{
+            right:100%;
+        }
+        .item:hover .item03 img{
+            left:100%;
+        }
+        .item:hover .item04 img{
+            bottom:100%;
+        }
+    </style>
 </head>
 <body>
-    
+    <!--难带：如何构建结构-->
+    <div class="item">
+        <img src="../image/about1【微信：itcodeba 】.jpg" alt="">
+        <div class="mask">
+            <div class="mask-item item01"> <img src="../image/about2【微信：itcodeba 】.png" alt="" srcset=""></div>
+            <div class="mask-item item02"> <img src="../image/about2【微信：itcodeba 】.png" alt="" srcset=""></div>
+            <div class="mask-item item03"> <img src="../image/about2【微信：itcodeba 】.png" alt="" srcset=""></div>
+            <div class="mask-item item04"> <img src="../image/about2【微信：itcodeba 】.png" alt="" srcset=""></div>
+        </div>
+    </div>
 </body>
 </html>

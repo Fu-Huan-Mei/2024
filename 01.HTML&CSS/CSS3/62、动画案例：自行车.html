@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        @keyframes identifier {
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: 0 -4030px;
+            }
+        }
+    </style>
+    <style>
+        .bike{
+            width:130px;
+            height:130px;
+            background-image: url(../image/bike【微信：itcodeba\ 】.png);
+            margin:100px auto;
+            animation-name: identifier;
+            animation-duration: 1000ms;
+            animation-iteration-count: infinite;
+            /*关键这步！！！我没想到是用这个实现页面上一步一步骑行的效果*/
+            animation-timing-function: steps(31);
+        }
+        .bike:hover{
+            animation-duration: 2000ms;
+        }
+    </style>
+</head>
+<body>
+    <div class="bike"></div>
+</body>
+</html>
