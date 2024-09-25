@@ -7,12 +7,17 @@
     <style>
         @keyframes ballScroll {
             0%{
-                background-image: radial-gradient(at 40% 40%,#fff yellow);
+                background-image: radial-gradient(at 40% 40%,#fff, yellow);
             }
             100%{
                 
                 transform: translateX(900px) rotate(7200deg);
-                background-image: radial-gradient(at 40% 40%,#fff orange);
+                background-image: radial-gradient(at 40% 40%,#fff, orange);
+            }
+        }
+        @keyframes jump{
+            100%{
+                padding-bottom: 10px;
             }
         }
             
@@ -27,15 +32,23 @@
             height:100px;
             border-radius: 50%;
             /*设置关键帧*/
-            animation-name: ballScroll;
+            animation-name: ballScroll,jump;
             animation-duration: 10s;
+            animation-iteration-count: 3;
             animation-delay: 1s;
+            /* 动画开始前和结束后状态 */
+            animation-fill-mode: none;
+            /* animation-fill-mode: forwards;结束后处于帧的样式 */
+            /* animation-fill-mode: backwards;开始前处于帧的样式 */
             animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
-            animation-iteration-count: infinite;
             animation-direction: normal;
-            animation-direction: reverse;
-            animation-direction: alternate-reverse;
-            animation-fill-mode: ;
+            /* animation-direction: reverse;
+            animation-direction: alternate-reverse; */
+            /* 复合属性 */
+           
+        }
+        .ball:hover{
+            animation-play-state: paused;
         }
     </style>
 </head>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         /* .btn {
+            position: relative;
+            margin: 100px auto;
+            width: 300px;
+            height: 80px;
+            font-size: 40px;
+            text-align: center;
+            line-height: 80px;
+            color: #fff;
+            font-weight: 800;
+            background: deeppink;
+            transition: 2s;
+        } */
+        .btn{
+            position: relative;
+            width:300px;
+            height:80px;
+            margin:10px auto;
+            font-size: 40px;
+            text-align: center;
+            line-height: 80px;
+            color:#fff;
+            background-color: blueviolet;
+            font-weight: 800;
+            transition: 2s;
+        }
+
+/*         
+        .border {
+            position: absolute;
+            width: 0;
+            height: 10px;
+            background: yellowgreen;
+            transition: 2s;
+        }
+         */
+        .btnBorder{
+            position: absolute;/*定位元素的宽高被内容撑开：所以自己设置宽高*/
+            width:0;/*默认宽度*/
+            height:10px;
+            background-color: aqua;
+            transition: 2s;
+        }
+        .btnTop{
+            left:0;
+            top:0;
+        }
+        .btnBottom{
+            right:0;
+            bottom: 0;
+        }
+        .btn:hover{
+            color:chartreuse;
+            background-color: #fff;
+        }
+        .btn:hover .btnBorder{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <span class="btnBorder btnTop"></span>
+        CSS3
+        <span class="btnBorder btnBottom"></span>
+    </div>
+</body>
+</html>
