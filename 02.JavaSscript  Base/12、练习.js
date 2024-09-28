@@ -6,3 +6,4 @@ var a = 20;
 var res = ++a - a++ || a-- - --a;
 console.log(a);//20
 console.log(res);//2
+
