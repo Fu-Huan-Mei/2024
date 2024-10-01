@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九乘法表</title>
+    <style>
+        table {
+            width: 800px;
+            /*固定列宽*/
+            table-layout: fixed;
+            /*相邻单元格共用一个边框*/
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        /*条件（结构）伪类选择器  :empty 没有文本内容也没后代元素*/
+        td:not(:empty) {
+            padding: 10px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*分析：
+        第1行1个单元格
+        第2行2个单元格
+        */
+        document.write(`<h2>第一种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        for (var row = 1; row <= 9; row++) {
+            document.write(`<tr>`);
+            for (var column = 1; column <= row; column++) {
+                document.write(`<td>` + column + `&times;` + row + `=` + column * row + `</td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`<tbody>`);
+        document.write(`</table>`);
+
+        document.write(`<h2>第二种乘法表</h2>`);
+        //第1行：9个单元格
+        //1 * 9  2* 9  这个9一直是 column * (10 - row)
+        //第2行：8个单元格
+        //第3行：7个单元格
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        for (var row = 1; row <= 9; row++) {
+            document.write(`<tr>`);
+            for (var column = 1; column <= 10 - row; column++) {
+                document.write(`<td>` + column + `&times;` + (10 - row) + `=` + column * (10 - row) + `</td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`<tbody>`);
+        document.write(`</table>`);
+
+        //每一行有2种形式单元格：空白没内容的和有内容单元
+        document.write(`<h2>第3种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        for (var row = 1; row <= 9; row++) {
+            document.write(`<tr>`);
+            //没有内容的单元格 9-row个  1~9-i
+            for (var column = 1; column <= 9 - row; column++) {
+                document.write(`<td></td>`);
+            }
+
+            //有内容的单元格
+            for (var column = 1; column <= row; column++) {
+                document.write(`<td>` + column + `&times;` + row + `=` + column * row + `</td>`);
+            }
+
+            document.write(`</tr>`);
+        }
+        document.write(`<tbody>`);
+        document.write(`</table>`);
+
+
+        document.write(`<h2>第4种乘法表</h2>`);
+        //第1行：9个单元格
+        //1 * 9  2* 9  这个9一直是 column * (10 - row)
+        //第2行：8个单元格
+        //第3行：7个单元格
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        for (var row = 1; row <= 9; row++) {
+            for(var column = 1; column < row; column++){
+                document.write(`<td></td>`);
+            }
+           
+            for (var column = 1; column <= 10 - row; column++) {
+                document.write(`<td>` + column + `&times;` + (10 - row) + `=` + column * (10 - row) + `</td>`);
+            }
+           
+            document.write(`</tr>`);
+        }
+        document.write(`<tbody>`);
+        document.write(`</table>`);
+    </script>
+</body>
+
+</html>

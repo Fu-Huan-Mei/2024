@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while循环实现九九乘法表</title>
+    <style>
+        table {
+            width: 800px;
+            /*固定列宽*/
+            table-layout: fixed;
+            /*相邻单元格共用一个边框*/
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        /*条件（结构）伪类选择器  :empty 没有文本内容也没后代元素*/
+        td {
+            padding: 10px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        //第一种乘法表
+        document.write(`<h2>第一种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+            document.write(`<tr>`);
+                document.write(`<td>`);
+                document.write(`<td>`);
+            document.write(`</tr>`);
+            // var row = 1;
+            // var column = 1;
+            // //第1行1个单元格、第2行2个单元格
+            // while(row <= 9){
+            //     document.write(`<tr>`);
+            //         // while(column <= row){
+            //         //     document.write(`<td>`+column + `&times;`+ row + `=`+ column * row +`</td>`);
+            //         //     column++;
+            //         // }
+            //     document.write(`</tr>`);
+            //     row++;
+            // }
+        document.write(`</tbody>`);
+        document.write(`</table>`);
+    </script>
+</body>
+</html>

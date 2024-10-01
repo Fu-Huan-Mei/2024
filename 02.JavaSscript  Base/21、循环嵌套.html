@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环嵌套</title>
+    <style>
+        table {
+            width: 800px;
+            /*固定列宽*/
+            table-layout: fixed;
+            /*相邻单元格共用一个边框*/
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px; 
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        //指定行数和列数：动态指定
+        var rows = 10;
+        // var rows = alert('请输入行数：');
+        var columns = 8;
+        // var columns = alert('请输入列数：');
+        //输出表格10行8列
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        //循环10次，输出10行
+        for (var i = 1; i <= rows; i++) {
+            document.write(`<tr>`);
+            //循环8次，输出8个单元格
+            //为什么这里不能使用i变量，必须要换一个变量名？
+            //因为var i =1;只执行1次，但里面的td中的i会执行到8次，i=8；当输出第2个tr时，i从8开始，造成错乱
+            for (var j = 1; j <= columns; j++) {
+                document.write(`<td>` + i + `行`+ j + `列`+ `</td>`);
+            }
+            document.write(`</tr>`);
+        }
+        document.write(`</tbody>`);
+        document.write(`</table>`);
+    </script>
+</body>
+
+</html>
