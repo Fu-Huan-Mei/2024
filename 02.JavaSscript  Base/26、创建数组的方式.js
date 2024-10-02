@@ -65,12 +65,47 @@
 // };
 // console.log("数组中最大的元素min=",min);//数组中最大的元素min= 28
 
-var nameList = ["张安","李四","张飞","李逵","松松","小鬼"];
-nameList[nameList.length] = "小娟";
+// var nameList = ["张安","李四","张飞","李逵","松松","小鬼"];
+// nameList[nameList.length] = "小娟";
+// // console.log(nameList);
+// //push()添加到数组的最后
+// nameList.push("张张");
 // console.log(nameList);
-//push()添加到数组的最后
-nameList.push("张张");
-console.log(nameList);
-//unshift()添加到数组的前面
-nameList.unshift("第一","第二");
-console.log(nameList);
+// //unshift()添加到数组的前面
+// nameList.unshift("第一","第二");
+// console.log(nameList);
+// //指定位置添加新元素：位置，，新元素
+// nameList.splice(3,0,'刘姥姥');
+// console.log(nameList);
+
+// //删除数组元素
+// var nameList = ["张安","李四","张飞","李逵","松松","小鬼"];
+// nameList.length -= 1;
+// console.log(nameList);
+// //删除最后1个，1次只能删1个
+// nameList.pop();
+// console.log(nameList);
+// //删除第1个，1次只能删1个
+// nameList.shift();
+// console.log(nameList);
+// //splice()删除指定位置指定数量的元素，不要写第3个参数
+// nameList.splice(0,2);
+// console.log(nameList);
+
+// //多维数组
+// var citys = [['南京','上海','苏州','保山','大理'],
+// ['潍坊','济南','湖州','台湾','腾冲']];
+
+//字符串数组
+var str = 'hello world!';
+// console.log(str.length);
+// console.log(str[5]);
+// console.log(str[str.length-1]);
+//遍历字符串数组的所有字符
+// for(var i=0;i<str.length;i++){
+//     console.log(str[i]);
+// };
+//字符串具有部分数组特性
+console.log(typeof str,typeof []);//string原始类型 object集合类型 
+//str[0]=H//报错
+console.log(str);
