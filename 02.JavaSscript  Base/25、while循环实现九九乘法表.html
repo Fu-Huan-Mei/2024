@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,37 +16,118 @@
         }
 
         /*条件（结构）伪类选择器  :empty 没有文本内容也没后代元素*/
-        td {
+        td:not(:empty){
             padding: 10px;
             border: 1px solid #999;
         }
     </style>
 </head>
+
 <body>
-    
+
     <script>
         //第一种乘法表
         document.write(`<h2>第一种乘法表</h2>`);
         document.write(`<table>`);
         document.write(`<tbody>`);
+        var row = 1;
+        //分析：第1行1个单元格、第2行2个单元格
+        while (row <= 9) {
             document.write(`<tr>`);
-                document.write(`<td>`);
-                document.write(`<td>`);
+            var column = 1;
+            while (column <= row) {
+                document.write(`<td>` + column + `&times;` + row + `=` + column * row + `</td>`);
+                column++;
+            }
             document.write(`</tr>`);
-            // var row = 1;
-            // var column = 1;
-            // //第1行1个单元格、第2行2个单元格
-            // while(row <= 9){
-            //     document.write(`<tr>`);
-            //         // while(column <= row){
-            //         //     document.write(`<td>`+column + `&times;`+ row + `=`+ column * row +`</td>`);
-            //         //     column++;
-            //         // }
-            //     document.write(`</tr>`);
-            //     row++;
-            // }
+            row++;
+        }
         document.write(`</tbody>`);
         document.write(`</table>`);
+
+        //第二种乘法表
+        //分析： 第1行：9个单元格
+        //      第2行：8个单元格
+        //      第3行：7个单元格
+        document.write(`<h2>第二种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        var row = 1;
+        while (row <= 9) {
+            document.write(`<tr>`);
+            var column = 1;
+            while (column <= 10-row) {
+                document.write(`<td>` + column + `&times;` + (10-row) + `=` + column * (10-row) + `</td>`);
+                column++;
+            }
+            document.write(`</tr>`);
+            row++;
+        }
+        document.write(`</tbody>`);
+        document.write(`</table>`);
+
+        //第三种乘法表：专注！！！勇敢先去做吧！！！
+        //分析： 第1行：1个单元格
+        //      第2行：2个单元格
+        //      第3行：3个单元格
+        //分析：2种类型单元格：前面无内容部分、后面有内容部分
+        document.write(`<h2>第3种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        var row = 1;
+        //分析：第1行1个单元格、第2行2个单元格
+        while (row <= 9) {
+            document.write(`<tr>`);
+
+            //类型1：无内容的单元格
+            var column = 1;
+            while (column <= 10-row) {
+                document.write(`<td>` + `</td>`);
+                column++;
+            };
+
+            //类型2：有内容的单元格
+            var column = 1;
+            while (column <= row) {
+                document.write(`<td>` + column + `&times;` + row + `=` + column * row + `</td>`);
+                column++;
+            }
+            document.write(`</tr>`);
+            row++;
+        }
+        document.write(`</tbody>`);
+        document.write(`</table>`);
+
+
+         //第4种乘法表
+        //分析： 第1行：9个单元格
+        //      第2行：8个单元格
+        //      第3行：7个单元格
+        document.write(`<h2>第4种乘法表</h2>`);
+        document.write(`<table>`);
+        document.write(`<tbody>`);
+        var row = 1;
+        while (row <= 9) {
+            
+
+            var column = 1;
+            while (column < row) {
+                document.write(`<td>` + `</td>`);
+                column++;
+            }
+            
+            var column = 1;
+            while (column <= 10-row) {
+                document.write(`<td>` + column + `&times;` + (10-row) + `=` + column * (10-row) + `</td>`);
+                column++;
+            }
+            document.write(`</tr>`);
+            row++;
+        }
+        document.write(`</tbody>`);
+        document.write(`</table>`);
+
     </script>
 </body>
+
 </html>
