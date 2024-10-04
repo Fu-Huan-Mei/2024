@@ -61,24 +61,20 @@
 // console.log(p);//Product {} 新对象构造函数Product的实例
 // //（2）写了return
 
-//6、构造函数和函数 Array Function Object
+//6、构造函数和函数的返回值 Array Function Object
 // function People(){
-//     console.log('hello User!');
-//     return function(){
-
-//     };
+    
 // };
-// var r1 = new People();//User {}【User新实例/新对象】
-// var r2 = People();//undefined【没有return，undefined】
-// console.log(r1,r2);
-//如何实现实例化和调用该函数时打印结果相同？
-//答：return复杂类型数据（对象类型数据），就可使构造函数和函数返回结果相同
+// var r1 = new People();
+// var r2 = People();
+// console.log(r1);//User {}
+// console.log(r2);//undefined
+// //如何实现实例化和调用该函数时打印结果相同？
+// //答：return复杂类型数据（对象类型数据），就可使构造函数和函数返回结果相同
 
-//调用和实例化结果相同
+// //调用和实例化结果相同
 // function Product(){
-//     return function(){
-
-//     };
+//     return function(){};
 // };
 // var p1 = Product();
 // var p2 = new Product();
@@ -118,13 +114,13 @@
 // console.log((134).constructor);
 
 
-var arr = [];//数组：对象类型：因为本身就是对象类型，不需要包装成对象
-arr.age = 19;
-console.log(arr.age);//19
+// var arr = [];//数组：对象类型：因为本身就是对象类型，不需要包装成对象
+// arr.age = 19;
+// console.log(arr.age);//19
 
-//原始类型数据临时包装成对象：默认为值得状态，当成对象去使用时，临时new XXX（）创建1个对象，增删改查都是对临时对象操作
-var msg = '';//字符串：原始类型
-//将msg包装成对象：new String(msg),临时创建1个对象，给临时创建的对象添加属性info，本语句执行完，临时对象自动销毁
-msg.info = 'hello！';  
-//使用mag.info，又临时创建新对象new String(msg)，从该临时对象中读取属性address，用完即毁
-console.log(msg.info);//undefined【使用不存在的属性，自动得到undefined】
+// //原始类型数据临时包装成对象：默认为值得状态，当成对象去使用时，临时new XXX（）创建1个对象，增删改查都是对临时对象操作
+// var msg = '';//字符串：原始类型
+// //将msg包装成对象：new String(msg),临时创建1个对象，给临时创建的对象添加属性info，本语句执行完，临时对象自动销毁
+// msg.info = 'hello！';  
+// //使用mag.info，又临时创建新对象new String(msg)，从该临时对象中读取属性address，用完即毁
+// console.log(msg.info);//undefined【使用不存在的属性，自动得到undefined】
