@@ -12,8 +12,8 @@ var users = [
 //     //有几个元素就被调用几遍
 //     console.log(item,index);
 // });
-//filter()方法：
+//filter()方法：过滤（找到符合条件的元素）
 var res = users.filter(function(item,index){
-    console.log(item,index);
+   return item.age<40;
 });
-console.log(res);
+console.log(res);//[ { name: '孙权', age: 37, address: '南京' } ]
