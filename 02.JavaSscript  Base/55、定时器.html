@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多次定时器：每隔一段时间执行1次</title>
+    <style>
+        #box{
+            font-size: 600;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">停止定时器</button>
+    <div id="box"></div>
+    <script>
+        //多次定时器：每执行1次回调，自动清空上一次，才会开始下一次，这个setInterval()只在这里调用了1次，只是里面的回调函数执行多次
+        var d1 = setInterval(function(num){
+            console.log('helloworld！',num);
+        },1000,Math.random());//Math.random()只会在setInterval里执行了1次获取数据传给回调函数作为形参num的值，所以一直只会输出相同的数字
+    
+        //设置多次定时器，切换背景颜色
+        //setInterval()函数执行1次，里面的回调函数会执行多次
+        var d2 =setInterval(function(){
+            console.log("背景换颜色了！");
+            var r = Math.floor(Math.random()*256);
+            var g = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            document.body.style.backgroundColor = `rgb(` + r + `,` + g + `,` + b +`)`
+        },1000);
+
+        //停止定时器
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            clearInterval(d2);
+        };
+
+        //定义倒计时数字
+        var num = 10
+        //获取元素
+        var box = document.getElementById("box");
+        //开始定时
+        var d3 = setInterval(function(){
+            // if(num === 0){
+            //     clearInterval(d3);
+            //     return;
+            // }
+            num--;
+            box.innerHTML = num;
+            if(num === 0){
+                clearInterval(d3);
+            }
+        },1000);
+       
+       
+
+    </script>
+</body>
+</html>

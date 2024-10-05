@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>单次定时器：只会执行1次</title>
+    <style>
+        #box{
+            font-size: 400px;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">清除定时器</button>
+    <div id="box">10</div>
+    <script>
+        //设置单次定时器
+        var d1 = setTimeout(function(){
+            console.log("我执行了！");
+        },1000);
+        var btn = document.getElementById("btn");
+        btn.onclick = function(){
+            //清除定时器：肯定在执行单次定时器前停止
+            clearTimeout(d1);
+        };
+
+        //应用：倒计时
+        var num = 11;
+        var btn = document.getElementById("box");
+        runTime();
+        function runTime(){
+            num--;
+            box.innerHTML = num;
+            if(num === 0){
+               return;
+            } 
+            //开启定时器
+            setTimeout(runTime,1000);
+             
+        };
+    </script>
+</body>
+</html>

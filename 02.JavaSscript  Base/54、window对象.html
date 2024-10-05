@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window对象</title>
+</head>
+
+<body>
+    <button id="btn">打开空白窗口</button>
+    <button id="btn02">打开指定页面地址窗口</button>
+    <button id="btn03">指定窗口打开页面</button>
+    <iframe src="" frameborder="1" name="大佬"></iframe>
+    <script>
+        // console.log(window.name);
+        // name = '加油';//修改网页名字
+        // alert("警告框");
+        // var res = confirm('你确认吗?');
+        // console.log(res);
+        // var value = prompt("输入框：");
+        // console.log(value);//
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            //打开空白窗口
+            open();
+        };
+
+        var btn = document.getElementById('btn02');
+        btn.onclick = function(){
+            //打开指定页面地址窗口
+            open('./53、DOM.html');
+        };
+
+        var btn = document.getElementById('btn03');
+        btn.onclick = function(){
+            //指定窗口打开页面，本窗口
+            // open('http://www.baidu.com',name);
+            //在某个子窗口打开（iframe）
+            pen('http://www.taobao.com','');
+
+            //返回页面顶部：（X，Y）
+            scrollTo(0,0);
+            //🌂设置1个参数，该参数是对象：缓慢返回页面顶部
+            scrollTo(
+                {
+                    left:0,
+                    top:0,
+                    behavior:'smooth'
+                }
+            );
+
+            //参数：（X滚动距离，Y滚动距离）
+            scrollBy(0,200);
+            //🌂设置1个参数，该参数是对象：缓慢滚动距离
+            scrollBy({
+                top:600,
+                behavior:'smooth'
+            });
+        };
+    </script>
+
+</body>
+
+</html>

@@ -39,11 +39,25 @@
 // console.log(newStr);
 
 //随机数0~arr.length
-function randomArray(arr){
-    return parseInt(Math.random()*(arr.length));
-}
-var arr = ['李','王','张','牛','六','符','刘'];
-var index = randomArray(arr)
-console.log(arr[index]);//牛
+// function randomArray(arr){
+//     return parseInt(Math.random()*(arr.length));
+// }
+// var arr = ['李','王','张','牛','六','符','刘'];
+// var index = randomArray(arr)
+// console.log(arr[index]);//牛
 
+//输出当前时间；格式：'2021-03-04 19:02:56'
+var date = new Date();
+//分别获取
+var y = date.getFullYear();
+var m = date.getMonth();
+var d = date.getDate();
+var h = date.getHours();
+var i = date.getMinutes();
+var s = date.getSeconds();
+//补0
+m = m < 10 ? '0'+m : m;
+//拼接日期时间字符串
+var curDate = y + '-' + m + '-' + d+' '+h+':'+i+':'+s;
+console.log(curDate);
 
