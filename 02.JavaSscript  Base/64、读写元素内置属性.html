@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input checked  type="checkbox" name="" id="checkbox">
+    <button class="btn">读取属性值</button>
+    <img src="../01.HTML&CSS/picture/1.png" alt="电子产品" width="300" title="买电脑">
+    <script>
+        var imgs = document.querySelector("img");
+        var btn = document.querySelector(".btn");
+        var checkbox = document.getElementById('checkbox')
+        // 点击按钮，读取属性值
+        btn.onclick = function(){
+            //获取绝对路径
+            document.write(decodeURI(imgs.src));
+            document.write(imgs.width);
+            document.write(imgs.height);
+        };
+
+        //换图
+        btn.onclick = function(){
+            imgs.src = '../01.HTML&CSS/picture/2.png';
+           
+        };
+
+        //放大
+        btn.onclick = function(){
+            imgs.width += 100;
+        };
+
+        btn.onclick = function(){
+            //选中：true
+            console.log(checkbox.checked);//true
+            //未选中：false
+            //取反操作
+            checkbox.checked = !checkbox.checked ;
+        }
+    </script>
+</body>
+</html>
