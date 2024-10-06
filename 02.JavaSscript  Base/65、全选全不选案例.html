@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </li>
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </li>
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </li>
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </li>
+
+    <li>
+        <input type="checkbox" value="">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    </li>
+    <button id="Check">全选</button:btn>
+    <button id="noCheck">全不选</button>
+    <script>
+        var btn = document.getElementById("Check");
+        var noBtn = document.getElementById("noCheck");
+        var inputs = document.querySelectorAll('input');
+        console.log(inputs);
+        btn.onclick = function(){
+            for(var i = 0;i<inputs.length;i++){
+                console.log(inputs[i].checked);
+                inputs[i].checked = true;
+            }
+        };
+        //注意事件名：onxxx
+        noBtn.onclick = function(){
+            for(var i = 0;i<inputs.length;i++){
+                inputs[i].checked = false;
+            }
+        };
+    </script>
+</body>
+</html>

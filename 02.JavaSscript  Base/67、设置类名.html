@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式操作案例-设置类名</title>
+    <style>
+        .wrapper {
+            margin: 20px auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item {
+            flex: 0 0 auto;
+            margin: 10px;
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: #ccc;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        /*交集选择器*/
+        .item.active {
+            text-decoration: underline wavy;
+            color: #fff;
+            border: 2px solid orange;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+    </div>
+    <script>
+        //获取所有类名为item的元素
+        var itemBoxs = document.querySelectorAll('.item');
+        // console.log(itemBoxs);
+        //遍历所有item元素
+        itemBoxs.forEach(function (item) {
+            //方法2：classList 
+            //item.onclick = function () {
+                // if(item.classList.contains('active')){
+                //     item.classList.remove('active');
+                // }else{
+                //     item.classList.add('active');
+                // }
+            //}
+
+            //方法3：
+            item.onclick = function () {
+                item.classList.toggle('active');
+            }
+        });
+    </script>
+</body>
+</html>

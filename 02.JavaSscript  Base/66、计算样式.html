@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>样式操作案例</title>
+    <style>
+        .wrapper {
+            margin: 20px auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            flex: 0 0 auto;
+            margin: 10px;
+            width: 200px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background-color: #ccc;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+        <div class="item">零零零零</div>
+    </div>
+
+    <script>
+        //获取所有类名为item的元素
+        var itemBoxs = document.querySelectorAll('.item');
+        // console.log(itemBoxs);
+        //遍历所有item元素
+        itemBoxs.forEach(function (item) {
+            //判断当前item元素是否选中
+            //给每一个item元素添加点击事件
+            item.onclick = function () {
+                if (item.style.backgroundColor === "yellow") {
+                    //当前选中，执行取消选中操作
+                    item.style.backgroundColor = "";
+                    item.style.border = '';
+                } else {
+                    //当前没选中，执行选中操作
+                    item.style.backgroundColor = "yellow";
+                    item.style.border = '5px solid red';
+                    //问题：元素修改样式较多怎么办？很麻烦！！
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
