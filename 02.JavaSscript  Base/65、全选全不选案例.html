@@ -30,24 +30,49 @@
         <input type="checkbox" value="">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
     </li>
-    <button id="Check">全选</button:btn>
+    <li>
+        <input type="checkbox" value="" id="inputCheck">
+        全选
+    </li>
+    <!-- <button id="Check">全选</button:btn>
     <button id="noCheck">全不选</button>
+    <button id="isCheck">选不全</button> -->
     <script>
-        var btn = document.getElementById("Check");
-        var noBtn = document.getElementById("noCheck");
-        var inputs = document.querySelectorAll('input');
-        console.log(inputs);
-        btn.onclick = function(){
-            for(var i = 0;i<inputs.length;i++){
-                console.log(inputs[i].checked);
-                inputs[i].checked = true;
-            }
-        };
-        //注意事件名：onxxx
-        noBtn.onclick = function(){
-            for(var i = 0;i<inputs.length;i++){
-                inputs[i].checked = false;
-            }
+        // var btn = document.getElementById("Check");
+        // var noBtn = document.getElementById("noCheck");
+        // var isBtn = document.getElementById("isCheck");
+        // var inputs = document.querySelectorAll('input');
+        // console.log('inputs=',inputs);//只有NodeList有forEach()方法
+        // btn.onclick = function(){
+        //     for(var i = 0;i<inputs.length;i++){
+        //         console.log(inputs[i].checked);
+        //         inputs[i].checked = true;
+        //     }
+        // };
+        // //注意事件名：onxxx
+        // noBtn.onclick = function(){
+        //     for(var i = 0;i<inputs.length;i++){
+        //         inputs[i].checked = false;
+        //     }
+        // };
+
+        // isBtn.onclick = function(){
+        //     for(var i = 0;i<inputs.length;i++){
+        //         inputs[i].checked = !inputs[i].checked;
+        //     }
+        // };
+
+        //获取列表中复选框的集合
+        var checkBoxItems = document.querySelectorAll('input');
+        console.log('checkBoxItems =',checkBoxItems );
+        //获取全选的复选框按钮
+        var allBtn = document.getElementById('inputCheck');
+        //全选按钮监听单击事件
+        allBtn.onclick = function(){
+            //遍历列表中所有复选框
+            checkBoxItems.forEach(function(item){
+                item.checked = allBtn.checked;
+            })
         };
     </script>
 </body>
