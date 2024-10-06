@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取元素</title>
+</head>
+
+<body>
+    <div id="box01" name="all">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis fugiat eaque
+        necessitatibus cum quibusdam sed hic! Laudantium earum aperiam distinctio ipsa ad sapiente delectus sequi autem
+        culpa architecto. Neque, perferendis.</div>
+    <div id="box02" name="all">kkkkkkkkkkkkkkajjjjjjjjjjjjjjjjjj</div>
+    <div id="box03" name="all">越努力越幸运，加油！！！</div>
+    <div id="box" class="wrapper" name="all">
+        <p class="item">111111111111</p>
+        <div class="item" name="all">33333333</div>
+        <p>2222222222222</p>
+        <div name="all" class="item">5555555555555</div>
+    </div>
+    <script>
+        // //peles ：HTMLCollection类数组
+        // var peles = document.getElementsByTagName('p');
+
+        // //类数组：遍历：for 循环
+        // for(var i = 0;i<peles.length;i++){
+        //     peles[i].innerHTML = '哈哈哈';
+        // }
+
+        // // //先获取id为box的元素->再从box的后代元素中获取标签名是p的元素
+        var box = document.getElementById('box');
+        // // var ps = box.getElementsByTagName('p');
+        // // ps[ps.length -1].style.color = 'red';
+
+        // //通过类名item获取元素
+        // var items = document.getElementsByClassName("item");
+        // console.log(items);//HTMLCollection对象，类数组
+        // //从某个元素的后代中获取所有类名的元素
+        // var items01 = box.getElementsByClassName('item');
+
+        // //通过name属性获取元素
+        // var nodeList = document.getElementsByName('all');
+        // console.log(nodeList);
+
+        //使用CSS选择器获取元素：id选择器
+        //获取符合条件的第1个元素
+        // var box = document.querySelector("#box");
+        // var item = document.querySelector(".item");
+        // console.log(box,item);
+        //组合选择器：祖先后代
+        // var w = document.querySelector('.wrapper :nth-child(odd)');
+        // console.log('w=',w);
+        // var o = document.querySelector('.wrappers');
+        // console.log('o=',o);//获取不到就是null
+
+        //获取符合选择器条件的所有元素
+        // var items = document.querySelectorAll(".item");
+        // console.log('items=',items);//NodeList(3) [p.item, div.item, div.item]
+        // var box = document.querySelectorAll("#box");
+        // console.log(box);
+
+        //选择器方法：可从document和元素调用
+        // var newItems = box.querySelectorAll('.item');
+        // console.log('newItems=',newItems);//newItems= NodeList(3) [p.item, div.item, div.item]
+
+        //快捷方式获取元素
+
+        //使用 document.all 判断是否是 IE 浏览器：
+        if (document.all) {
+            // IE10以及以下的浏览器
+            document.write('您使用的是IE浏览器！');
+        } else {
+            // IE11、EDGE、Chrome、Firefox、Safari 等等
+            document.write('您使用的不是IE浏览器！');
+        }
+    </script>
+</body>
+
+</html>

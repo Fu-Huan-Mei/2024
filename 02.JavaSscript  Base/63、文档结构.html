@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper{
+
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="wrapper">
+        <p>1111111111111111111111111</p>
+        <p>1111111111111111111111111</p>
+        <p>1111111111111111111111111</p>
+        <p>1111111111111111111111111</p>
+        <p>1111111111111111111111111</p>
+        <p>1111111111111111111111111</p>
+    </div>
+    <script>
+        //获取id是box的元素
+        var boxEle = document.querySelector("#box");
+        //获取boxEle下的所有子节点：文本节点（空格换行）、元素节点
+        //console.log(boxEle.childNodes);//NodeList(13) [text, p, text, p, text, p, text, p, text, p, text, p, text]
+        //获取boxEle下的所有子元素：
+        //console.log(boxEle.children);//HTMLCollection(6) [p, p, p, p, p, p]
+        //第一个子元素
+        //console.log(boxEle.firstElementChild);//<p>1111111111111111111111111</p>
+        //第2个子元素
+        //console.log(boxEle.children[2]);
+        //boxEle.children[2].style.color='red';
+        console.log(boxEle.parentElement);
+    </script>
+</body>
+</html>

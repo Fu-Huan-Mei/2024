@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM节点</title>
+    <style>
+        .item{
+            width:300px;
+            height:400px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="item">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia debitis cumque praesentium, natus, iure quidem, amet sed id laborum cum hic sequi minus optio numquam quisquam consequatur. Eligendi, minima possimus?
+        <!--注释！！！-->
+    </div>
+    <script>
+        //document类型的节点，document表示整个文档
+        console.log(document);//document系统变量名
+        console.log(document.nodeName);
+        console.log(document.nodeValue);
+        console.log(document.nodeType);//9
+        
+
+        //元素类型的节点：为什么元素需要获取？因为一个文档中的元素有很多个，所以需要一一获取
+        var box = document.getElementById("box");
+        //box自己定义的变量名
+        console.log(box);
+        console.log(document.nodeName);//名 #document
+        console.log(document.nodeValue);//值  null
+        console.log(document.nodeType);//类型  1
+
+        //属性类型的节点：
+        var c = box.getAttributeNode("class");
+        console.log('c=',c);
+        console.log(c.nodeName);//名：class
+        console.log(c.nodeValue);//值：item  
+        console.log(c.nodeType);//类型：2
+
+        //文本类型的节点
+        var t = box.firstChild;
+        console.log('t=',t);
+        console.log(t.nodeName);//名：#text
+        console.log(t.nodeValue);//值：文本内容 
+        console.log(t.nodeType);//类型：3
+
+        //注释类型节点
+        var z = box.childNodes[1];
+        console.log('z=',z);
+        console.log(z.nodeName);//名：#comment
+        console.log(z.nodeValue);//值：注释！！！
+        console.log(z.nodeType);//类型：8
+    </script>
+</body>
+</html>
