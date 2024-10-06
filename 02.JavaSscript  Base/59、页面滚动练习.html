@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .box {
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .btns {
+            position: fixed;
+            right: 10px;
+            bottom: 20px;
+        }
+
+        .btn {
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 5px;
+            color: #fff;
+            text-align: center;
+            font-size: 12px;
+            background-color: #333;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">
+        <h2>ONE</h2>
+    </div>
+    <div class="box box2">
+        <h2>TWO</h2>
+    </div>
+    <div class="box box3">
+        <h2>THREE</h2>
+    </div>
+    <div class="box box4">
+        <h2>FOUR</h2>
+    </div>
+    <div class="box box5">
+        <h2>FIVE</h2>
+    </div>
+    <div class="btns">
+        <div class="btn" id="prevBtn">上一页</div>
+        <div class="btn" id="nextBtn">下一页</div>
+        <div class="btn" id="topBtn">返回顶部</div>
+    </div>
+
+    <script>
+        //每个box元素设置视口一样的高度
+        var box = document.querySelectorAll('.box');
+        box.forEach(function (ele) {
+            ele.style.height = window.innerHeight + 'px';
+        });
+        //获取下一页的按钮并监听单击事件：用户点击下一页，页面往上滚动，height为正值
+        var nextBtn = document.getElementById('nextBtn');
+        nextBtn.onclick = function () {
+            var height = window.innerHeight;
+            window.scrollBy({
+                top:height,
+                behavior: 'smooth'
+            })
+        };
+        //获取上一页的按钮并监听单击事件：用户点击下一页，页面往上滚动，height为正值
+        var prevBtn = document.getElementById('prevBtn');
+        prevBtn.onclick = function () {
+            var height = window.innerHeight;
+            window.scrollBy({
+                top:-height,
+                behavior: 'smooth'
+            })
+        };
+        //返回顶部：距离都是top left这样的，不是width height
+        var topBtn = document.getElementById('topBtn');
+        topBtn.onclick = function () {
+            var height = window.innerHeight;
+            window.scrollTo({
+                left:0,
+                top:0,
+                behavior: 'smooth'
+            })
+        };
+    </script>
+</body>
+
+</html>

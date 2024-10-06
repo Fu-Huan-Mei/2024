@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location</title>
+</head>
+<body>
+    <button id="btn">点我修改location属性</button>
+    <script>
+        // console.log(location);
+        // //完整的URL
+        // console.log(location.href);
+        // //URL的组成部分：协议+主机名（域名：主机名的别名）+端口号（确定发到哪里信息）
+        // console.log('协议=',location.protocol);
+        // console.log('主机名=',location.hostname);
+        // console.log('端口号=',location.port);
+        // console.log('路径信息=',decodeURI(location.pathname));
+        // console.log('锚点信息=',location.hash);
+        // console.log('参数信息=',location.search);
+
+        // var btn = document.getElementById('btn');
+        // //点击修改location属性
+        // btn.onclick = function(){
+        //     location.href = "./18、生肖计算器.js";
+        // };
+        //剪切板、摄像头、话筒（授权才可用）
+        document.write(window.navigator.userActivation);
+    </script>
+</body>
+</html>

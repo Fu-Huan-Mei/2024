@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子时钟</title>
+    <style>
+        #watch {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="watch"></div>
+    <script>
+        //获取元素
+        var w = document.getElementById('watch');
+        //手动调用函数：解决打开页面多次定时器1秒后才执行的问题
+        runTime();
+        //设置定时器，多次定时，时间间隔1s
+        setInterval(runTime,1000);
+        function runTime () {
+            //创建日期时间对象（动态计时）
+            var time = new Date();
+            //获取年月日时分秒
+            var y = time.getFullYear();
+            var m = time.getMonth() + 1;
+            var d = time.getDate();
+            var h = time.getHours();
+            var i = time.getMinutes();
+            var s = time.getSeconds();
+            //个位数补0【这个没怎么想到】
+            m = m < 10 ? '0' + m : m;
+            d = d < 10 ? '0' + d : d;
+            h = h < 10 ? '0' + h : h;
+            i = i < 10 ? '0' + i : i;
+            s = s < 10 ? '0' + s : s;
+            //拼接
+            w.innerHTML = y + '-' + m + '-' + d + ' '+ h + ':' + i + ':' + s
+        };
+    </script>
+</body>
+
+</html>

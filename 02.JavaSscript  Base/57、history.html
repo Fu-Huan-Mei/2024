@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history历史记录：本窗口历史记录</title>
+</head>
+<body>
+    <button id="btn1">后退1步</button>
+    <button id="btn2">后退2步</button>
+    <script>
+        var btn1 = document.getElementById('btn1');
+        btn1.onclick = function(){
+            //后退1步
+            history.back();
+        };
+
+        var btn2 = document.getElementById('btn2');
+        btn2.onclick = function(){
+            //后退2步
+            history.go(-2);
+        }
+
+        //前进
+        var btn3 = document.getElementById('btn3');
+        btn3.onclick = function(){
+            //前进1步
+            history.forward();
+            //前进：2步（正数）
+            history.go(2);
+        }
+    </script>
+</body>
+</html>
