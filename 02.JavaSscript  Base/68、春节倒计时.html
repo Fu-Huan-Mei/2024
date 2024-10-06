@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>春节倒计时案例</title>
+    <style>
+        body {
+            background: #ccc;
+        }
+
+        #box {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 80px;
+            font-weight: 800;
+            color: #8a437e;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        距离春节还有10天10小时10分钟10秒
+    </div>
+    <script>
+        //立即执行函数
+        (function () {
+            runTime();
+            //3、设置定时器，时间间隔1000ms
+            var id = setInterval(runTime, 1000)
+            function runTime() {
+                //1、获取元素
+                var box = document.getElementById('box');
+                //2、创建目标日期对象:2024-02-10
+                var targetDate = new Date(2025, 0, 28);
+                //4、创建当前日期时间对象
+                var curDate = new Date();
+                //5、计算当前日期和目标日期相差的毫秒数
+                var seconds = targetDate.getTime() - curDate.getTime();
+                //6、从相差毫秒数中取出整天数
+                // var d = Math.floor(seconds / (24 * 3600 * 1000));
+                // //提取小时数：先取出不足1天的毫秒数再除以60
+                // var h = Math.floor((seconds % (24 * 3600 * 1000) ) / ( 3600 * 1000));
+                // //提取整分钟数：先取出不足1小时的毫秒数再除以60* 1000
+                // var m = Math.floor(((seconds % (24 * 3600 * 1000) )% 3600 * 1000)/60* 1000);
+                // //提取秒数：提取到剩下的不足1分钟的毫秒数
+                // var s = Math.floor( (seconds % 60* 1000) / 1000);
+                // 从相差的毫秒数中提取整的天数
+                var d = Math.floor(seconds / (24 * 3600000));
+                // 提取整的小时数 先取出不足一天的毫秒数 除以3600000
+                var h = Math.floor(seconds % (24 * 3600000) / 3600000);
+                // 提取整的分钟数 先取出不足一小时的毫秒数再除以60000   (seconds % (24*3600000) % 3600000) -> (seconds % 3600000)
+                var m = Math.floor(seconds % 3600000 / 60000);
+                // 提取剩下的不足一分钟的毫秒数
+                var s = Math.floor(seconds % 60000 / 1000);
+
+                // console.log('时间=',d ,h,m,s);
+                //个位数补0
+                d < 10 ? '0' + d : d;
+                h < 10 ? '0' + h : h;
+                m < 10 ? '0' + m : m;
+                s < 10 ? '0' + s : s;
+                //拼接
+                box.innerHTML = '距离春节还有<br>' + d + '天' + h + '小时' + m + '分钟' + s + '秒';
+                //如果倒计时到0，则停止定时器
+                if(s <=0){
+                    clearInterval(id);
+                    box.innerHTML = '春节快乐！';
+                    return;
+                }
+            };
+        })();
+    </script>
+</body>
+
+</html>

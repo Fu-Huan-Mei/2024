@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读写元素中的内容</title>
+    <style>
+        .wrapper{
+            width:600px;
+            padding:20px;
+            border:10px darkorange dotted;
+        }
+        .item{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <button id="button">读取内容</button>
+    <button id="btn02">设置内容</button>
+    <div id="box" class="wrapper">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti ducimus aliquid minus minima unde repellat delectus magnam veritatis beatae explicabo obcaecati suscipit itaque dignissimos, molestiae exercitationem placeat nam blanditiis consequatur.
+        <ul>
+            <li>Lorem ipsum dolor sit amet .</li>
+            <li>Lorem ipsum dolor sit amet .</li>
+            <li>Lorem ipsum dolor sit amet .</li>
+            <li>Lorem ipsum dolor sit amet .</li>
+            <li>Lorem ipsum dolor sit amet .</li>
+            <li>Lorem ipsum dolor sit amet .</li>
+        </ul>
+        <p>Lorem ipsum dolor. Iure molestiae nemo eum ab magnam dolore inventore, dignissimos animi reiciendis non velit corporis necessitatibus tenetur labore soluta ex incidunt alias adipisci?</p>
+    </div>
+    <script>
+    //     //获取元素
+    //    var box = document.querySelector('#box');
+    //    var btn = document.getElementById('button');
+    //    var btn02 = document.getElementById('btn02');
+    //    //读取元素中的内容
+    //    btn.onclick = function(){
+    //     console.log(box.innerHTML);//保留除了最外层的其它元素、内容
+    //     console.log(box.innerText);//保留换行
+    //     console.log(box.textContent);//保留换行缩进
+    //     console.log(box.outerHTML);//保留所有元素内容
+    //    };
+    //     //设置元素中的内容
+    //     btn02.onclick = function(){
+    //    //定义要设置的内容
+    //    var msg = `<p class='item'>张三<em>hhhh</em></p>`;
+    //    //设置
+    //    box.innerHTML = msg;
+    //    box.outerHTML  = msg;
+    //    box.textContent = msg;
+    //    box.innerText = msg;
+    //    };
+    console.log(window.innerWidth,window.innerHeight);
+    console.log(document);
+    console.log(document.documentElement);//获取html根元素
+    console.log(document.documentElement.clientWidth,document.documentElement.clientHeight);
+    </script>
+</body>
+</html>
