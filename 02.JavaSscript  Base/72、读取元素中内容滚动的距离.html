@@ -11,7 +11,7 @@
             padding:20px;
             border:2px solid #999;
             /*溢出内容*/
-            overflow: hidden;
+            overflow: auto;
         }
         .wrapper p {
             width:1000px;
@@ -37,7 +37,7 @@
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, odit vel? Voluptatem cum, laborum totam voluptatum cupiditate omnis ratione asperiores quaerat nulla. Dicta a, id cupiditate officiis itaque accusamus dolorum.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis dolorum consectetur animi! Quia labore nisi esse! Iure, atque, exercitationem accusantium nesciunt officiis nihil, soluta accusamus cum iusto earum fugiat facere?</p>
     </div>
-
+    <div style="margin-bottom: 100px"></div>
     <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
     <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
     <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
@@ -50,12 +50,11 @@
     <div class="btns">
         <button id="btn01">内容往上滚动</button>
         <button id="btn02">内容往下滚动</button>
-        
         <button id="btn03">内容往左滚动</button>
         <button id="btn04">内容往右滚动</button>
     </div>
 
-    <!-- <script>
+    <script>
         //1、内容在元素中滚动的距离
         var topBtn = document.getElementById('topBtn');
         var leftBtn = document.getElementById('leftBtn');
@@ -80,7 +79,7 @@
         topBtn.onclick = function(){
             box.scrollTop += 20;
         };
-    </script> -->
+    </script>
 
     <!--2、整个页面在视口中滚动的距离（位置）-->
     <script>
