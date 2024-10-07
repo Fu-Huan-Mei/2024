@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .wrapper {
+            margin: 20px auto;
+            width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .item {
+            margin: 10px;
+            flex: 0 0 auto;
+            box-sizing: border-box;
+            width: 200px;
+            height: 80px;
+            background-color: blueviolet;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        /* 交集选择器：中间紧挨着 */
+        .item.active {
+            color: aqua;
+            border: 2px solid orangered;
+            background-color: darkturquoise;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+        <div class="item">快乐开心涨知识啦！</div>
+    </div>
+    <script>
+        //获取所有类名是item的元素
+        var itemBox = document.querySelectorAll('.item');
+
+        // //方法1：直接设置行内样式：单独改每一个样式，会比较麻烦，不方便
+        // //遍历所有item元素，给每个元素加上item元素、
+        // itemBox.forEach(function (item) {
+        //     //给每一个item元素添加事件
+        //     item.onclick = function () {
+        //         // console.log (item.style.backgroundColor);
+        //         //判断当前item元素是否选中
+        //         if (item.style.backgroundColor === 'rgb(255, 255, 255)') {
+        //             //取消选中：空字符串设置到行内样式，但样式没值，所以按照内嵌样式生效即可
+        //             item.style.border = '';
+        //             item.style.backgroundColor = '';
+        //         } else {
+        //             //选中
+        //             item.style.border = '10px solid #ccc';
+        //             item.style.backgroundColor = '#fff';
+        //         }
+        //     }
+        // });
+
+        // //方法2：设置类名
+        // //遍历所有item元素，给每个元素加上item元素、
+        // itemBox.forEach(function (item) {
+        //     //给每一个item元素添加事件
+        //     item.onclick = function () {
+        //         if (item.className === 'item active') {
+        //             item.className = 'item';
+        //         } else {
+        //             //🔺🔺注意：如果只写active，那就没有item的样式，只有active的样式
+        //             //item.className = 'active';
+        //             item.className = 'item active';
+        //         }
+        //     }
+        // });
+
+       
+        
+        
+    //方法3：设置类型classList
+    //遍历所有item元素，给每个元素加上item元素、
+        itemBox.forEach(function (item) {
+            //给每一个item元素添加事件
+            item.onclick = function () {
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+                //自由切换样式
+                // item.classList.toggle('active');
+
+            }
+        });
+    </script>
+</body>
+
+</html>
