@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取计算样式</title>
+    <style>
+        .box{
+            margin-top:20px;
+            width:600px;
+            padding:20px;
+            border:2px dashed orange;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button id="getBtn">获取样式值</button>
+    <button id="setBtn">设置样式值</button>
+    <div class="box" id="box" style="background: aqua;text-decoration: line-through;">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam expedita accusamus quam beatae, quo quis dolorem culpa dolor rerum illum unde? Cupiditate impedit deserunt, illo est necessitatibus labore. Ipsam, iure.
+    </div>
+    <script>
+        var box = document.getElementById("box");
+        var getBtn = document.getElementById("getBtn");
+        var setBtn = document.getElementById("setBtn");
+       //1、点击按钮，读取样式
+        getBtn.onclick = function(){
+           //如果使用复合属性则可获取到所有属性，所以可写具体属性才可获取具体属性值
+           console.log(window.getComputedStyle(box).background);//rgb(0, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box
+           //继承的属性也可获取
+           console.log(window.getComputedStyle(box).fontSize);//14px
+           console.log(window.getComputedStyle(box).marginTop);//20px
+        
+        
+        };
+
+        //2、点击按钮，修改样式
+        setBtn.onclick = function(){
+         
+        };
+</script>
+</body>
+</html>

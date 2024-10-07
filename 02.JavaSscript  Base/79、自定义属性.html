@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义属性：标准格式的自定义属性</title>
+</head>
+<body>
+
+    <img data-at-add="100" data-my="mine" src="../01.HTML&CSS/picture/1.png" alt="开心" srcset="" width="300">
+    <script>
+        var img = document.querySelector('img');
+        //读取标准形式的自定义属性
+        console.log(img.dataset.my);
+        console.log(img.dataset.atAdd);
+        //修改标准形式的自定义属性
+        img.dataset.my = 'you';
+        img.dataset.atAdd = '666';
+        console.log(img.dataset.my);
+        console.log(img.dataset.atAdd);
+    </script>
+</body>
+</html>
