@@ -58,6 +58,8 @@
             </ul>
         </div>
     </div>
+   
+    <li id="onlyLi">我是li</li>
     <script>
         //获取元素
         var todoContent = document.querySelector("#todoContent");
@@ -65,7 +67,7 @@
         var insertBtn = document.getElementById('insertBtn');
         var deleteBtn = document.getElementById('deleteBtn');
         var replaceBtn = document.getElementById('replaceBtn');
-       
+       var onlyLi = document.getElementById('onlyLi');
         var inputBox = document.getElementById('input');
         
         // //点击添加按钮
@@ -108,23 +110,25 @@
           var newLi = document.createElement('li');
           //设置新元素中的文本内容
           newLi.innerHTML = '我是新元素'+Math.random();
-          
+
           //点击添加按钮
           addBtn.onclick = function(){
             //给ul添加li子节点
-            todoContent.appendChild(newLi);
+            //todoContent.appendChild(newLi.cloneNode(true));
+            todoContent.appendChild(onlyLi);
         };
 
         //点击插入按钮
         insertBtn.onclick = function(){
             //给ul插入li子节点
-            todoContent.insertBefore(newLi,todoContent.firstElementChild);
+            //todoContent.insertBefore(newLi.cloneNode(true),todoContent.firstElementChild);
+            todoContent.insertBefore(onlyLi,todoContent.firstElementChild);
         };
         
         //点击替换按钮
         replaceBtn.onclick = function(){
             //替换元素
-            todoContent.replaceChild(newLi,todoContent.lastElementChild);
+            //todoContent.replaceChild(newLi.cloneNode(true),todoContent.lastElementChild);
         };
 
 

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题栏滚动案例</title>
+</head>
+<body>
+    <script>
+        //设置网站标题
+        document.title = '您有1条消息请查收';
+        //设置定时器
+        setInterval(function(){
+            document.title[0]
+            document.title = document.title.slice(1)+document.title[0]
+        },200);
+    </script>
+</body>
+</html>
