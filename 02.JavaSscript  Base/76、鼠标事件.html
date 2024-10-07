@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件</title>
+    <style>
+        .box{
+            width:200px;
+            height:500px;
+            margin:0 auto;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+         //事件对象event形参
+        box.onclick = function(event){
+           console.log('event=',event);
+        };
+
+        
+    </script>
+</body>
+</html>
