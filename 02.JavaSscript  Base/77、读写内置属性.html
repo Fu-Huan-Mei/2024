@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读写内置属性（包括全局属性）：元素.属性名=属性值</title>
+</head>
+<body>
+    <input type="checkbox" name="checkBox" id="checkBox" checked>
+    <button id="btn01">读写内置属性</button>
+    <button id="btn02">修改内置属性</button>
+    <img src="../01.HTML&CSS/picture/1.png" alt="开心" srcset="" width="300">
+    <script>
+        var checkBox = document.getElementById('checkBox');
+        var img = document.querySelector('img');
+        var btn01 = document.getElementById('btn01');
+        var btn02 = document.getElementById('btn02');
+        //读取内置属性值
+        btn01.onclick = function(){
+            console.log(img.src);
+            console.log(img.width);//值是1个数字
+            console.log(img.height);//没写height属性还会读取到，因为height是内置属性，html体系中自动添加的内置属性
+            console.log(img.id);//''得到空字符串
+            console.log("复选框 checkBox.checked=", checkBox.checked);//复选框 checkBox.checked= true/false
+        };
+
+        //修改内置属性值
+        btn02.onclick = function(){
+            //换图
+            img.src = "../01.HTML&CSS/picture/2.png";
+            //放大图片
+            img.width += 20;
+            //赋值操作
+            checkBox.checked = !checkBox.checked;
+        };
+    </script>
+</body>
+</html>
