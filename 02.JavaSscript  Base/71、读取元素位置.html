@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读取元素位置（offset系列、client系列、getBoundingClientRect）</title>
+    <style>
+        .wrapper{
+            overflow: hidden;
+            /* position: relative; */
+            width:500px;
+            border: 10px orange dotted;
+        }
+        .wrapper p{
+            border-width: 10px 20px 30 40px;
+            width:800px;
+            padding:20px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul>
+            <li>111111111111111</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+        <p id="box">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat laudantium iure in ex commodi maxime, vitae id molestiae modi incidunt optio omnis eligendi, fuga fugit laboriosam quod ea suscipit dolores.
+        </p>
+    </div>
+    <script>
+        var box = document.getElementById('box');
+        // //offset获取元素在第一个定位的祖先元素上的位置（从内边距开始计算位置），如果找不到定位元素，则相对于页面定位
+        // console.log(box.offsetLeft,box.offsetTop);//结果只是1个数字，方便计算！！
+        // console.log(box.clientLeft,box.clientTop);//结果只是1个数字，方便计算！！
+        // var r = box.getBoundingClientRect();
+        // //元素在视口上的位置
+        // console.log(r.left,r.top);
+        
+        // //offset系列：获取元素总宽高（内容+内边距+边框）
+        // console.log(box.offsetWidth,box.offsetHeight);
+        // //client系列：获取元素总宽高（内容+内边距）：不算边框意义：子元素只在父元素内容区和内边距上移动，不太可能移动拖拽到边框上，限制子元素可移动范围，肯定不能移动到边框上
+        // console.log(box.clientWidth,box.clientHeight);
+        // //scroll系列：获取元素总宽高（内容+内边距+溢出内容宽高）
+        // console.log(box.scrollWidth,box.scrollHeight);
+        // //尺寸信息
+        // var res = box.getBoundingClientRect();
+        // console.log(res.width,res.height);//与offset相同：内容+内边距+边框
+
+        //读取计算样式：读取到的是字符串
+        // console.log(getComputedStyle(box).width,getComputedStyle(box).height);//800px 46.4px
+        
+        //获取视口尺寸：包含滚动条的大小
+        console.log(window.innerWidth,window.innerHeight);
+        //获取视口尺寸：不包含滚动条的大小
+        console.log(document.documentElement.clientWidth,document.documentElement.clientHeight);
+    </script>
+</body>
+</html>
