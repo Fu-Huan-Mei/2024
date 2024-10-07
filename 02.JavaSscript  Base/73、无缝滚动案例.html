@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>无缝滚动案例</title>
+    <style>
+        .wrapper {
+            overflow: hidden;
+            display: flex;
+            margin: 100px auto;
+            width: 800px;
+            height: 200px;
+            border: 1px solid orange;
+        }
+
+        .wrapper img {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="wrapper" id="box">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
+    </div>
+    <script>
+        //无缝滚动
+        (function () {
+            var box = document.getElementById('box');
+            scrollFun();
+            setInterval(scrollFun, 100);
+            function scrollFun(){
+                box.scrollLeft += 20;
+                console.log(box.scrollLeft);
+                if (box.scrollLeft === 1600) {
+                    box.scrollLeft = 0;
+                }
+            };
+        })();
+    </script>
 </body>
+
 </html>
