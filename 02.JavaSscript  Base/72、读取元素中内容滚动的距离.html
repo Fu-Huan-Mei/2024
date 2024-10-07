@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读取元素中内容滚动的位置</title>
+    <style>
+        .wrapper{
+            width:600px;
+            height:250px;
+            padding:20px;
+            border:2px solid #999;
+            /*溢出内容*/
+            overflow: hidden;
+        }
+        .wrapper p {
+            width:1000px;
+            padding:20px;
+            background-color: #ccc;
+        }
+
+        .btns{
+            position: fixed;
+            right:0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <button id="rightBtn">水平右边：点我就滚动</button>
+    <button id="leftBtn">水平：点我就滚动</button>
+    <button id="topBtn">垂直：点我就滚动</button>
+    <div class="wrapper" id="box">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, dicta deleniti illum laudantium optio, porro cupiditate iste voluptatibus beatae eum labore nam officiis architecto qui soluta. A est adipisci molestias.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi dolores sequi asperiores, eius laborum harum rerum libero quos impedit dolor distinctio. Sunt, excepturi. Numquam quasi, perspiciatis nam odio nisi nesciunt.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus nemo quidem quam repudiandae quasi repellendus, asperiores ratione minus incidunt quia perspiciatis voluptatum iusto culpa reprehenderit sint! Deleniti molestias excepturi cumque!</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi, odit vel? Voluptatem cum, laborum totam voluptatum cupiditate omnis ratione asperiores quaerat nulla. Dicta a, id cupiditate officiis itaque accusamus dolorum.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis dolorum consectetur animi! Quia labore nisi esse! Iure, atque, exercitationem accusantium nesciunt officiis nihil, soluta accusamus cum iusto earum fugiat facere?</p>
+    </div>
+
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+    <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+
+    <div class="btns">
+        <button id="btn01">内容往上滚动</button>
+        <button id="btn02">内容往下滚动</button>
+        
+        <button id="btn03">内容往左滚动</button>
+        <button id="btn04">内容往右滚动</button>
+    </div>
+
+    <!-- <script>
+        //1、内容在元素中滚动的距离
+        var topBtn = document.getElementById('topBtn');
+        var leftBtn = document.getElementById('leftBtn');
+        var rightBtn = document.getElementById('rightBtn');
+        var box = document.getElementById('box');
+        //监听内容滚动
+        box.onscroll = function(){
+            // console.log('触发滚动');
+            //读取元素中内容滚动的距离
+            console.log(box.scrollLeft,box.scrollTop);
+            // box.scrollLeft = 100;
+        };
+        //点击内容向左滚动：scrollLeft越来越大
+        leftBtn.onclick = function(){
+            box.scrollLeft += 20;
+        };
+        //点击内容向右滚动：
+        rightBtn.onclick = function(){
+            box.scrollLeft -= 20;
+        };
+        //点击内容上滚动：scrollTop越来越大
+        topBtn.onclick = function(){
+            box.scrollTop += 20;
+        };
+    </script> -->
+
+    <!--2、整个页面在视口中滚动的距离（位置）-->
+    <script>
+        var btn01 = document.getElementById('btn01');
+        var btn02 = document.getElementById('btn02');
+
+       
+
+        btn01.onclick = function(){
+            document.documentElement.scrollTop += 20;
+        };
+
+        btn02.onclick = function(){
+            document.documentElement.scrollTop -= 20;
+        };
+    </script>
+</body>
+</html>
