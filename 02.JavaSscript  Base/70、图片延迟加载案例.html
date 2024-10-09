@@ -100,6 +100,20 @@
         (function () {
             //（1）获取所有图片
             var imgItems = document.querySelectorAll('.wrapper img');
+            //方法1：遍历获取纯数组【我想到了这种方法】
+            // var imgArr= [];
+            // //遍历imgItems，将里面的元素添加到数组中
+            // imgItems.forEach(item=>{
+            //     imgArr.push(item);
+            // });
+
+            //方法2：截取操作获取纯数组：根据NodeList对象创建了新的纯数组
+            var imgArr = [].slice.call(imgItems,0);
+        
+            //🔺🔺🔺delete删除数组中的元素：但只会删除值，不会删除索引，其它元素索引不会改变-稀疏数组
+            //🔺🔺🔺forEach()方法：如果元素是没值得元素，直接跳过
+            
+
             //加载首屏图片
             loadImg();
             //（2）监听页面发生滚动
@@ -110,13 +124,19 @@
                 //（4）遍历所有图片
                 //优化：只需要遍历那些都没加载过的图片即可！！可以通过item.src来判断
 
-                imgItems.forEach(function (item) {
+                imgArr.forEach(function (item,index) {
                     //🔺🔺判断本图片与视口顶部的距离（item.getBoundingClientRect().top） < 视口高度（document.documentElement.clientHeight）：显示
-                    if (item.getBoundingClientRect().top < document.documentElement.clientHeight && !item.src) {
+                    if (item.getBoundingClientRect().top < document.documentElement.clientHeight) {
                         //给图片设置src属性（使用自定义属性data-xxxx）
                         item.src = item.dataset.src
+                        //直接删除元素，导致后面元素都会前进1位，影响数据结构，导致有1个元素会被跳走，
+                        //将该元素从imgArr中删除后，后面元素自动补位导致该元素无法被遍历加载？？
+                        //imgArr.splice(index,1);
+                        //只会删除数组元素值，不会删除其索引值
+                        delete imgArr[index];
                     }
                 });
+                console.log(imgArr);
             };
         })();
     </script>
