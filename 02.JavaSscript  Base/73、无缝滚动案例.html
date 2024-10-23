@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>无缝滚动案例</title>
+    <title>无缝滚动案例：多看多理解</title>
     <style>
         .wrapper {
             overflow: hidden;
@@ -15,6 +15,11 @@
             border: 1px solid orange;
         }
 
+        /*项目疑难杂症？？【分享？？】
+        1、问题：为什么使用box.firstElementChild.offsetWidth有时是80px，有时是200px？
+        伸缩盒布局：盒子再收缩也不会挤压盒子内容：图片没加载上，说明伸缩项目没有内容，会收缩成80px，因为总宽度是800，所以收缩为80；
+        图片加载上时，盒子会收缩但不会挤压图片文件，图片是200px，所以伸缩项目就是200px
+        2、解决：flex: 0 0 auto;不伸也不缩，每次得到都是200px的图片，我使用了固定的图片了*/
         .wrapper img {
             flex: 0 0 auto;
             width: 200px;
@@ -35,21 +40,27 @@
         <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
         <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
         <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
-        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
-        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
     </div>
     <script>
         //无缝滚动
         (function () {
+            //1、获取图片元素
             var box = document.getElementById('box');
+            //获取一张图片的宽度(包括内容+内边距+边框+滚动条)
+            var imgWidth =box.firstElementChild.offsetWidth;
+            //获取图片数量
+            var imgLength = box.children.length;
+            //关键点：2、将所有图片复制一份
+            box.innerHTML += box.innerHTML;
             scrollFun();
+            //3、开启定时器
             setInterval(scrollFun, 100);
             function scrollFun(){
                 box.scrollLeft += 20;
-                console.log(box.scrollLeft);
-                if (box.scrollLeft === 1600) {
+                //判断临界值
+                if(box.scrollLeft >= imgWidth * imgLength){
                     box.scrollLeft = 0;
-                }
+                };
             };
         })();
     </script>
