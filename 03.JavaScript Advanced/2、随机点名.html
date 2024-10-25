@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            margin: 100px auto;
+            width: 400px;
+            text-align: center;
+        }
+ 
+        #box {
+            line-height: 150px;
+            font-size: 80px;
+        }
+ 
+        #btn {
+            width: 200px;
+            height: 80px;
+            font-size: 40px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="box">随机点名器</div>
+        <button id="btn">开始</button>
+    </div>
+ 
+    <script>
+        (function() {
+            // 定义数组 包含姓名列表
+            var nameList = ['曹操', '刘备', '孙权', '诸葛亮', '吕布', '关羽', '张飞', '孙尚香', '司马懿', '周瑜', '邢道荣', '夏侯惇', '公孙瓒', '孙悟空', '尉迟敬德', '秦琼'];
+            
+            // 获取元素
+            var box = document.querySelector('#box');
+            var btn = document.querySelector('#btn');
+ 
+            var intervalId = null;
+ 
+            // 点击按钮的事件
+            btn.onclick = function() {
+                // 判断按钮上的文字
+                if (btn.innerHTML === '停止') {
+                    // 停止定时器
+                    clearInterval(intervalId);
+                    // 修改按钮上的文字
+                    btn.innerHTML = '继续';
+                } else {
+                    // 开启定时器
+                    intervalId = setInterval(function() {
+                        // 随机从数组取出一个元素 作为box的内容
+                        box.innerHTML = nameList[Math.floor(Math.random() * nameList.length)];
+                    }, 100);
+                    // 修改按钮上的文字
+                    btn.innerHTML = '停止';
+                }
+ 
+            }
+        })();
+    </script>
+</body>
+</html>

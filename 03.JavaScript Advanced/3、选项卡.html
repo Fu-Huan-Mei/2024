@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选项卡</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+ 
+        .tab {
+            margin: 100px auto;
+            width: 800px;
+        }
+ 
+        .tab-nav {
+            display: flex;
+            height: 40px;
+            line-height: 40px;
+            border-left: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+        }
+ 
+        .tab-nav li {
+            padding: 0 20px;
+            background: #f5f5f5;
+            border-top: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+        }
+ 
+        .tab-nav li.active {
+        /*为什么height设置为40px时父元素的下边框就消失了？
+        因为子元素高度为41px，父元素高度为40px，所以父元素的下边框其实刚好被子元素内容给盖主了
+        所以我们看到页面效果是父元素下边框长度消失了*/
+            height: 40px;
+            background: #fff;
+        }
+ 
+        .tab-content li {
+            display: none;
+            min-height: 200px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+ 
+        .tab-content li.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul class="tab-nav">
+            <li class="active">未付款订单</li>
+            <li>未发货订单</li>
+            <li>未收货订单</li>
+            <li>未评价订单</li>
+            <li>已完成订单</li>
+        </ul>
+        <ul class="tab-content">
+            <li class="active">这是未付款订单</li>
+            <li>这是未发货订单</li>
+            <li>这是未收货订单</li>
+            <li>这是未评价订单</li>
+            <li>这是已完成订单</li>
+        </ul>
+    </div>
+    <script>
+        (function(){
+            //获取元素
+            var tabNavItems = document.querySelectorAll('.tab-nav li');
+            var tabContentItems = document.querySelectorAll('.tab-content li');
+            //遍历选项卡导航，每一个都添加单击事件
+            tabNavItems.forEach(function(tabNavItem){
+                tabNavItem.onclick=function(){
+                    //其它取消选中（排它处理：把所有tabNav取消选中，再把当前点击的给选中）
+                    for(var i = 0;i<tabNavItems.length;i++){
+                        tabNavItems[i].classList.remove(active);
+                    }
+                    //当前点击添加active类名表示被选中
+                    tabNavItem.classList.add('active');
+
+                }
+            })
+        })();
+    </script>
+</body>
+</html>
