@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件流： 描述事件的触发过程</title>
+    <style>
+        div {
+            padding: 100px;
+        }
+
+        .box01 {
+            width: 800px;
+
+            background-color: aqua;
+        }
+
+        .box02 {
+
+
+            background-color: blueviolet;
+        }
+
+        .box03 {
+
+            background-color: rgb(235, 15, 217);
+        }
+
+        .box04 {
+
+            height: 100px;
+            background-color: rgb(223, 229, 104);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box01">box01
+        <div class="box02">box02
+            <div class="box03">box03
+                <div class="box04">box04</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //获取元素
+        var box01 = document.querySelector(".box01");
+        var box02 = document.querySelector(".box02");
+        var box03 = document.querySelector(".box03");
+        var box04 = document.querySelector(".box04");
+
+        box01.addEventListener('click', function () {
+            alert('box01被监听了！');
+        });
+
+        box02.addEventListener('click', function () {
+            alert('box02被监听了！');
+        });
+
+        box03.addEventListener('click', function () {
+            alert('box03被监听了！');
+        });
+
+        box04.addEventListener('click', function () {
+            alert('box04被监听了！');
+        });
+
+    </script>
+</body>
+
+</html>

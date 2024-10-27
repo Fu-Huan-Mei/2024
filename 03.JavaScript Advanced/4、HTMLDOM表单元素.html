@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,textarea,select {
+            box-sizing: border-box;
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+<body>
+    <form action="1.php" id="myForm">
+        <table>
+            <tr>
+                <td>邮箱：</td>
+                <td>
+                    <input type="email" id="emailInput">
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align:top">留言：</td>
+                <td>
+                    <textarea id="" cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>地址：</td>
+                <td>
+                    <select id="addressSel"></select>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    <button id="btn">双击提交 右击重置</button>
+   
+    <script>
+        // 获取到form元素
+        var formBox = document.querySelector('#myForm');
+        var btn = document.querySelector('#btn');
+ 
+        console.log('表单控件的数量：', formBox.length);
+        console.log('表单控件元素的集合：', formBox.elements);
+ 
+        // 双击 提交表单
+        btn.ondblclick = function() {
+            formBox.submit();
+        };
+ 
+        // 右击 重置表单
+        btn.oncontextmenu = function() {
+            formBox.reset();
+        }
+ 
+        // 5s之后 自后让第一输入框获取焦点
+        setTimeout(function() {
+            formBox.elements[0].focus();
+            // 再过3s 失去焦点
+            setTimeout(function() {
+                formBox.elements[0].blur();
+            }, 3000);
+        }, 5000);
+ 
+ 
+        // 双击文本域选中里面的内容
+        formBox.elements[1].ondblclick = function() {
+            formBox.elements[1].select();
+        };
+ 
+ 
+        // 创建数组
+        var addressArr = ['北京', '上海', '乌鲁木齐', '呼和浩特', '武汉', '西安', '成都'];
+        // 遍历数组
+        addressArr.forEach(function(item, index) {
+            // 创建option元素
+            // var newOption = document.createElement('option');
+            // newOption.innerHTML = item;
+            // newOption.value = index;
+            // var newOption = new Option(item, index);
+         
+            // 将option添加到select
+            // formBox.elements[2].appendChild(newOption);
+            // formBox.elements[2].add(newOption);
+         
+            formBox.elements[2].add(new Option(item, index));
+        });
+ 
+        console.log('选项的数量：', formBox.elements[2].length);
+        console.log('选项元素的集合', formBox.elements[2].options);
+        console.log('当前所选中的选项的索引', formBox.elements[2].selectedIndex);
+ 
+        // 删除选中的选项
+        // [].forEach.call(formBox.elements[2].options, function(opt, index) {
+        //  //  console.log(opt);
+ 
+        //     opt.onmouseenter = function()  {
+        //         console.log(opt);
+        //         formBox.elements[2].remove(index);
+        //     }
+        // });
+ 
+        formBox.elements[2].onchange = function() {
+            formBox.elements[2].remove(formBox.elements[2].selectedIndex);
+        }
+ 
+    </script>
+</body>
+</html>

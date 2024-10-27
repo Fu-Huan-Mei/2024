@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单事件</title>
+</head>
+<body>
+    <form action="./11、元素拖拽案例.html" method="get">
+        <input type="email" name="" id="email" placeholder="请输入邮箱">
+        <br>
+        <input type="password" name="" id="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+        <br>
+        <input type="text" name="" id="text">
+        <div id="box"></div>
+    </form>
+    <script>
+        // var formBox = document.querySelector('form');
+        var text = document.getElementById('text');
+        var box = document.getElementById('box');
+        // //监听表单提交事件
+        // formBox.onsubmit = function(){
+        //     alert("我正在提交！");
+        // };
+        // //监听表单重置事件
+        // formBox.onreset = function(){
+        //     alert("我正在重置！");
+        // };
+
+        //输入框中的内容
+        text.onfocus = function(){
+            box.innerHTML = '正在输入......';
+        };
+
+        //输入框中的内容失去焦点就要进行验证：实时验证
+        text.onblur = function(){
+            box.innerHTML = text.value;
+        };
+        
+        //输入框中的内容被选中
+        text.onselect = function(){
+            alert("被选中！");
+        };
+
+        //keyup缺陷：如果没有通过键盘输入内容，比如复制粘贴就无法响应键盘事件
+
+        //input事件
+
+        //change事件：输入框内容改变就触发
+        text.onchange = function(){
+            alert("内容改变实时触发！");
+        };
+
+        
+    </script>
+</body>
+</html>

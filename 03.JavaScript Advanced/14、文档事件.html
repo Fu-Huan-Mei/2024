@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">666</div>
+    <script>
+        //整个文档加载完毕：保证页面元素都加载完成，正常渲染出来
+        window.onload = function(){
+            var box = document.getElementById('box');
+            console.log(box);
+        };
+    </script>
+</body>
+</html>

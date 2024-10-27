@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件监听</title>
+</head>
+<body>
+    <!--1、方式1：标签对象的属性：同一个标签属性写多次，但只是第1次生效噢！-->
+    <button id="btn01" 
+    onclick="alert('单击')" 
+    oncontextmenu="alert('右击！')">
+    按钮01
+    </button>
+    <button id="btn02">按钮02</button>
+    <button id="btn03">按钮03</button>
+    <button id="btn04">按钮03</button>
+    <script>
+        var btn01 = document.querySelector("#btn01");
+        /*2、方式2：元素对象的属性：同一个方法被多次书写，相当于重新赋值，则最后1次生效*/
+        var btn02 = document.querySelector("#btn02");
+        btn02.onclick = function(){
+            alert("btn02被click了！");
+        };
+        btn02.onclick = function(){
+            alert("btn02又被click了！");
+        };
+
+        /*3、方式3：xxx.addEventListener('事件名',回调函数)：同一个事件被多次调用，都会执行*/
+        var btn03 = document.querySelector("#btn03");
+        function fun(){
+            alert('btn03被click了！');
+        }
+        btn03.addEventListener('click',fun);
+        btn03.addEventListener('click',fun);
+
+        //解除事件绑定
+        var btn04 = document.querySelector("#btn04");
+        btn04.addEventListener('click',function(){
+            btn01.onclick = null;
+            btn02.onclick = null;
+            btn03.removeEventListener('click',fun)
+        });
+    </script>
+</body>
+</html>

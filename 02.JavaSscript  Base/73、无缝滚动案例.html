@@ -54,7 +54,7 @@
             box.innerHTML += box.innerHTML;
             scrollFun();
             //3、开启定时器
-            setInterval(scrollFun, 100);
+            var intervalId = setInterval(scrollFun, 100);
             function scrollFun(){
                 box.scrollLeft += 20;
                 //判断临界值
@@ -62,6 +62,17 @@
                     box.scrollLeft = 0;
                 };
             };
+            //4、鼠标进入元素，停止定时器
+            box.onmouseenter = function(){
+                clearInterval(intervalId);
+            }
+            //5、鼠标离开元素，再次开启定时器
+            box.onmouseleave = function(){
+                intervalId = setInterval(scrollFun, 100);
+            };
+
+            //6、滚轮事件：默认行为：让页面进行滚动
+
         })();
     </script>
 </body>

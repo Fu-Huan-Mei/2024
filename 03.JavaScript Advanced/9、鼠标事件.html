@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标事件</title>
+    <style>
+        #box{
+            width:400px;
+            height:250px;
+            padding: 20px;
+            background-color: #099;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis delectus placeat sapiente consequuntur quis fugiat fugit provident ex quam qui autem praesentium quisquam, quia ratione doloribus recusandae in eius doloremque.
+    </div>
+    <script>
+        //获取元素
+        var box = document.querySelector('#box');
+        
+        //单击
+        box.onclick = function(){
+            console.log('box被点击了');
+        };
+
+        //双击
+        box.ondbclick = function(){
+            console.log('box被双击了');
+        };
+
+        //右击菜单
+        box.oncontextmenu = function(){
+            console.log('box被双击了');
+        };
+    </script>
+</body>
+</html>

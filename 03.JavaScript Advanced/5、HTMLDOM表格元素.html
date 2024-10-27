@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 800px;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" placeholder="姓名" id="name"> <br>
+    <input type="text" placeholder="地址" id="address"> <br>
+    <input type="text" placeholder="电话" id="phone"> <br>
+    <button id="btn">添加</button>
+
+    <hr>
+
+    <table id="table">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>地址</th>
+                <th>电话</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>曹操</td>
+                <td>上海</td>
+                <td>15856435678</td>
+                <td>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>刘备</td>
+                <td>上海</td>
+                <td>15856435678</td>
+                <td>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>孙权</td>
+                <td>上海</td>
+                <td>15856435678</td>
+                <td>
+                    <button class="delete-btn">删除</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //获取相关元素
+        var tableBox = document.querySelector("#table");
+        var nameInp = document.querySelector("#name");
+        var addressInp = document.querySelector("#address");
+        var phoneInp = document.querySelector("#phone");
+        var btn = document.querySelector("#btn");
+        var deleteBtns = document.querySelectorAll(".delete-btn");
+        //点击添加按钮
+        btn.onclick = function () {
+            //创建并添加行：相当于把createElement()和appendChild()方法合为一起了
+            var tr = tableBox.insertRow();
+            //在行里添加单元格td：创建并添加到tr里
+            tr.insertCell(0).innerHTML = tr.rowIndex;
+            tr.insertCell(1).innerHTML = nameInp.value;
+            tr.insertCell(2).innerHTML = addressInp.value;
+            tr.insertCell(3).innerHTML = phoneInp.value;
+            tr.insertCell(4).innerHTML = `<button class="delete-btn">删除</button>`;
+        };
+
+        // //遍历删除按钮，给每个删除按钮，添加单击事件
+        // deleteBtns.forEach(function (deleteBtn) {
+        //     deleteBtn.onclick = function () {
+        //         console.log(deleteBtn.parentElement.parentElement);
+        //         tableBox.deleteRow(deleteBtn.parentElement.parentElement.rowIndex);
+        //     };
+        // })
+
+
+        // 使用事件委托来处理删除按钮的点击事件
+        tableBox.addEventListener('click', function (e) {
+            if (e.target.classList.contains('delete-btn')) {
+                //找到删除按钮所在这行
+                var row = e.target.parentElement.parentElement;
+                row.remove();
+            }
+        });
+
+    </script>
+</body>
+
+</html>
