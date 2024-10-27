@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mask-box {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: #333;
+            display: flex;
+            transition: top 1s;
+        }
+ 
+        .mask-inner {
+            margin: auto;
+            width: 60%;
+        }
+ 
+        .progress-box {
+            height: 20px;
+            border: 1px solid #fff;
+        }
+ 
+        .progress-content {
+            height: 20px;
+            background: #fff;
+            width: 0%;
+        }
+ 
+        .progress-num {
+            margin-top: 10px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>小乐的快乐生活</h1>
+    <img src="https://cdn.pixabay.com/photo/2023/04/24/03/16/camping-7947056_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_960_720.jpg" alt="">
+    <img src="https://cdn.pixabay.com/photo/2016/12/11/12/02/mountains-1899264_960_720.jpg" alt="">
+ 
+    <!-- 遮罩元素 -->
+    <div class="mask-box" id="maskBox">
+        <div class="mask-inner">
+            <div class="progress-box">
+                <div class="progress-content"></div>
+            </div>
+            <div class="progress-num">
+                0%
+            </div>
+        </div>
+    </div>
+    <script>
+        (function(){
+            // 获取相关元素
+            var maskBox = document.querySelector('#maskBox');
+            var progressContent = maskBox.querySelector('.progress-content');
+            var progressNum = maskBox.querySelector('.progress-num');
+            // 创建数组 保存页面中高清大图的地址
+            var imgData = [
+                'https://cdn.pixabay.com/photo/2023/04/24/03/16/camping-7947056_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2017/02/01/22/02/mountain-landscape-2031539_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2013/10/02/23/03/mountains-190055_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2016/08/11/23/48/mountains-1587287_960_720.jpg',
+                'https://cdn.pixabay.com/photo/2016/12/11/12/02/mountains-1899264_960_720.jpg',
+            ];
+            // 定义变量记录已经加载的图片的数量
+            loadedImgNum = 0;
+            // 遍历所有的图片
+            imgData.forEach(function(item) {
+                // 创建img元素
+                var imgEle = new Image();
+                imgEle.src = item;
+                // 给新img元素监听load事件
+                imgEle.onload = function(){
+                    loadedImgNum ++;  // 已加载图片数量 +1
+                    var progress = loadedImgNum / imgData.length;   // 计算当前进度
+                    // 进度条变化
+                    progressContent.style.width = progress * 100 + '%';
+                    // 显示进度条数字
+                    progressNum.innerHTML = progress * 100 + '%';
+                    // 判断加载完毕
+                    if (progress >= 1) {
+                        maskBox.style.top = '-100%';
+                    }
+                }
+            })
+        })()
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画事件</title>
+    <style>
+        @keyframes boxScroll {
+            100% {
+                transform: translate(1000px,200px) rotate(360deg);
+            }
+        }
+        #box{
+            width:100px;
+            height:100px;
+            background-color: aqua;
+            color:#fff;
+            font-size: 30px;
+            text-align: center;
+            line-height:100px;
+            animation: boxScroll 2s 1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        动画
+    </div>
+</body>
+</html>

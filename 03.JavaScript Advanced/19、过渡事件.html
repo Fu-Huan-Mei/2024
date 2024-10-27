@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡事件</title>
+    <style>
+        #box{
+            transition: 2s;
+            width:200px;
+            height:200px;
+            background-color: aqua;
+        }
+        #box.active{
+            /*为什么过渡会有5次？因为有4个圆角就有4次样式过渡，再加上下面央视过度？？*/
+            border-radius: 50%; 
+            transform: rotate(720deg);
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var box = document.getElementById('box');
+        box.onclick = function(){
+            this.classList.toggle('active');
+        };
+        box.ontransitionstart = function(){
+            console.log('开始过渡start');
+        };
+        box.ontransitionrun= function(){
+            console.log('开始过渡run');
+        };
+        box.ontransitionend = function(){
+            console.log('结束过渡end');
+        };
+    </script>
+</body>
+</html>

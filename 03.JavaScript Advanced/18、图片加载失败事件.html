@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片加载失败事件</title>
+    <style>
+        .wrapper{
+            margin:0 auto;
+            width:1000px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .wrapper img{
+            margin:10px;
+            width:220px;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/3.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/4.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/1.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/2.png" alt="" srcset="">
+        <img src="../02.HTML&CSS/picture/3.png" alt="" srcset="">
+        <img src="../01.HTML&CSS/picture/4.png" alt="" srcset="">
+    </div>
+    <script>
+    (function(){
+        //获取所有需要判断的图片元素
+        var imgItems = document.querySelectorAll('.wrapper img');
+        //给每个img元素监听error事件
+        imgItems.forEach(function(imgItem){
+            imgItem.onerror = function(){
+                alert('加载失败就换一张！');
+                imgItem.src = "../01.HTML&CSS/picture/3.png";
+            }
+        });
+    })();
+    </script>
+</body>
+</html>

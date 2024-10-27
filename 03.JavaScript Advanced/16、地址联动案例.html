@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地址联动案例</title>
+    <style>
+        select{
+            display: inline-block;
+            width:200px;
+            height:40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>请选择地址</h1>
+    <select name="" id="provSel"></select>
+    <select name="" id="citySel"></select>
+    <script>
+        (function(){
+
+        })();
+        var provList = ['江苏','浙江','安徽','河南'];
+        var cityList = [
+            ['南京','苏州','徐州'],
+            ['杭州','温州','宁波'],
+            ['合肥','芜湖','黄山'],
+            ['郑州','洛阳','开封'],
+        ];
+        //获取元素
+        var provSel = document.querySelector('#provSel');
+        var citySel = document.querySelector('#citySel');
+        //根据数据，添加省的选项
+        provList.forEach(function(item,index){
+            provSel.add(new Option(item,index));
+        });
+        //监听省的选项改变
+        provSel.onchange = function(){
+            //获取当前所选的选项
+            var index = this.selectedIndex;
+            //清空目前城市的下拉选项
+            citySel.Option = '';
+            //取出该省份对应的城市信息,添加为选项
+            cityList[index].forEach(function(item,index){
+                citySel.add(new Option(item,index));
+            });
+        };
+    </script>
+</body>
+</html>
