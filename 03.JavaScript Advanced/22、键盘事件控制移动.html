@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘按键案例</title>
+    <style>
+        #box{
+            position: relative;
+            width:800px;
+            height:600px;
+            border:2px solid green;
+            background-color: #f5f5f5;
+        }
+        #tank{
+            position: absolute;
+            top:100px;
+            left:400px;
+            width:45px;
+            height:45px;
+            background:url(../01.HTML&CSS/picture/1.png) no-repeat ;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="tank"></div>
+    </div>
+    <script>
+        (function(){
+            //1、获取元素
+            var box = document.querySelector("#box");
+            var tank = document.querySelector("#tank");
+            //2、监听键盘事件
+            document.onkeydown = function(e){
+                //3、判断按键
+                switch(e.keyCode){
+                    case 37:
+                        //左
+                        tank.style.transform = `rotate(-90deg)`;
+                        // var left = tank.offsetLeft -5;
+                        // if(left < 0){
+                        //     left = 0;
+                        // }
+                        // tank.style.left = left + 'px'; 
+                        //编程小技巧
+                        
+                        tank.style.left =Math.max(tank.offsetLeft -5,0) + 'px';
+                        break;
+                    case 38:
+                        //上
+                        tank.style.transform = `rotate(0deg)`;
+                        // var top = tank.offsetTop -5;
+                        // if(top < 0){
+                        //     top=0;
+                        // }
+                        // tank.style.top = top + 'px'; 
+                        //编程小技巧
+                        tank.style.top =Math.max(tank.offsetTop -5,0) + 'px';
+                        break;
+                    case 39:
+                        //右
+                        tank.style.transform = `rotate(90deg)`;
+                        // tank.style.left = tank.offsetLeft + 5 + 'px';
+                        //编程小技巧
+                        tank.style.left =Math.min( tank.offsetLeft + 5,box.clientWidth - tank.offsetWidth) + 'px'; 
+                        break;
+                    case 40:
+                        //向下
+                        tank.style.transform = `rotate(180deg)`;
+                        // tank.style.top = tank.offsetTop + 5 + 'px';
+                        //编程小技巧
+                        //获取元素的尺寸：元素.clientWidth / clientHeight：总宽高（内容+内边距）
+                        //获取元素的位置：元素.offsetLeft / offsetTop：获取元素在页面上的位置【参照物：包含块】
+                        tank.style.top =Math.min( tank.offsetTop + 5,box.clientHeight - tank.offsetHeight) + 'px'; 
+                        break; 
+                }
+            };
+        })();
+    </script>
+</body>
+</html>
