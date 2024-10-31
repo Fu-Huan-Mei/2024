@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件委托</title>
+</head>
+<body>
+    <script>
+        // 获取相关元素
+        var todoContent = document.querySelector('#todoContent');
+        //获取所有删除按钮
+        var deleteBtns = todoContent.querySelectorAll('delete');
+        //为什么新增的li元素中的span为什么无法删除？因为新增的li中的span不在deleteBtns里，在新增前就监听了deletBtn.onclick
+        //遍历所有删除按钮，每个删除按钮监听单击事件
+        deleteBtns.forEach(function(deletBtn){
+            deletBtn.onclick = function(){
+                //🔺this指向监听事件的这个元素即deletBtn
+                todoContent.removeChild(this.parentElement);
+            };
+        });
+//要委托给一直存在的元素，打开页面就一直存在的元素
+//将删除按钮的单击事件委托给todoContent
+        todoContent.onclick = function(e){
+            //用户点击不同元素，目标元素e.target不同
+            //如果目标元素是删除按钮，才能执行相应的操作
+            //nodeName节点名字：获取标签名
+            if(e.target.className === 'delete'){
+                //删除删除按钮所在的li
+                //e.target获取删除按钮
+                todoContent.removeChild(e.target.parentElement)
+            }
+        };
+    </script>
+</body>
+</html>

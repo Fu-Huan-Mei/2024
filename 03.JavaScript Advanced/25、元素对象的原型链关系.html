@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元素对象的原型链关系</title>
+</head>
+<body>
+    <div id="box01"></div>
+    <p id="box02"></p>
+    <script>
+        var box01 = document.getElementById('box01');
+        var box02 = document.getElementById('box02');
+        //div元素的原型链
+        console.log(box01);
+        console.log(box01.constructor);//构造函数是HTMLDivElement
+        console.log(HTMLDivElement.prototype);//构造函数是HTMLElement
+        console.log(HTMLElement.prototype);//构造函数是Element
+        console.log(Element.prototype);//构造函数是Node
+        console.log(Node.prototype);//构造函数是EventTarget
+        console.log(EventTarget.prototype);//构造函数是Object
+        console.log(Object.prototype);//顶层原型
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件对象的原型链</title>
+</head>
+<body>
+    <script>
+        document.onmousedown = function(event){
+            console.log(event);//构造函数是MouseEvent
+            console.log(MouseEvent.prototype);//构造函数是UIEvent
+            console.log(UIEvent.prototype);//构造函数是Event
+            console.log(Event.prototype);//构造函数是Object
+            console.log(Object.prototype);
+        };
+    </script>
+</body>
+</html>
