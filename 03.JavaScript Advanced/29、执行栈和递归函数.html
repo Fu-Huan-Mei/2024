@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行栈和递归函数</title>
+</head>
+<body>
+    <script>
+        function func(n){
+            console.log(n);
+            if(n>=1){
+                func(n-1);
+            };
+            console.log(n);
+        };
+        func(3);
+
+        //创建全局执行上下文对象
+        function fun(){
+            var n = Math.random();
+            console.log('n');
+        };
+        //调用函数，创建执行上下文对象进栈，调用结束就出栈
+        fun(1);
+        //调用函数，创建执行上下文对象进栈，调用结束就出栈
+        fun(2);
+        //调用函数，创建执行上下文对象进栈，调用结束就出栈
+        fun(3);
+        //关闭页面，全局执行上下文对象出栈
+    </script>
+</body>
+</html>
