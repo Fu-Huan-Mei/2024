@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" id="btn">点我</button>
+    <script>
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click',fn1);
+        btn.addEventListener('click',fn2);
+        function fn1(){
+            alert("我是fn1函数");
+        };
+        function fn2(){
+            alert("我是fn2函数");
+        };
+    </script>
+</body>
+</html>

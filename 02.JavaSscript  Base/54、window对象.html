@@ -13,6 +13,10 @@
     <button id="btn03">指定窗口打开页面</button>
     <iframe src="" frameborder="1" name="大佬"></iframe>
     <script>
+        /*
+        因为 window 对象（浏览器环境的全局对象）继承自 Object.prototype，而 Array 构造函数又继承自 Object。
+        因此，在浏览器中，你可以直接访问 Array.prototype 上的方法。
+        */
         // console.log(window.name);
         // name = '加油';//修改网页名字
         // alert("警告框");
