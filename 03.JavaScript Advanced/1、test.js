@@ -40,7 +40,7 @@
 // console.log(Array.prototype.__proto__ === Object.prototype);
 // console.log(Object.prototype.__proto__ === null);
 
-let obj = {a:1,b:2,length:2};
+let obj = { a: 1, b: 2, length: 2 };
 // for(item in obj){
 //     console.log(obj[item]);
 // };
@@ -56,6 +56,42 @@ let obj = {a:1,b:2,length:2};
 // }
 
 //实现数组的随机排序
-let arr = [1,2,3,5,4,6,8,7,9];
-console.log(arr.sort());
-console.log(parseInt(Math.random()*10));
+let arr = [1, 2, 3, 5, 4, 6, 8, 7, 9];
+// console.log(arr.sort());
+// console.log(parseInt(Math.random()*10));
+let newArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function randomSort(arr) {
+    for (var i = 0; i < arr.length; i++) {
+        var r = parseInt(Math.random() * arr.length);
+        var temp = arr[r];
+        arr[r] = arr[i];
+        arr[i] = temp;
+    }
+    return arr;
+
+}
+console.log(randomSort(newArr));
+
+
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function randSort2(arr) {
+    var mixedArray = [];
+    while (arr.length > 0) {
+        //获取随机索引
+        var randomIndex = parseInt(Math.random() * arr.length);
+        //通过索引值获取元素放入新数组中
+        mixedArray.push(arr[randomIndex]);
+        //记得在原数组中删除该元素
+        arr.splice(randomIndex, 1);
+    }
+    return mixedArray;
+}
+console.log(randSort2(arr))
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+arr.sort(function () {
+    console.log(Math.random());
+    return Math.random() - 0.5;
+})
+console.log(arr);
