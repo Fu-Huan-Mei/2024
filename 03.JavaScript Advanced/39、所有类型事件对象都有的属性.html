@@ -22,10 +22,11 @@
     </style>
 </head>
 <body>
-    <div id="box">
+    <!-- <div id="box">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet ratione iusto ipsa nostrum quos. Soluta facilis, atque quae similique hic, culpa eum voluptatibus ipsam minus reiciendis quod at, recusandae officiis.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam numquam sint rerum error nam. Libero explicabo similique nobis iusto magnam distinctio excepturi consequatur, consequuntur rem totam doloribus quibusdam a fugiat.</p>
-    </div>
+    </div> -->
+    <a hef="http://www.atguigu.com">百度以下你就知道</a>
     <script>
         //获取元素
         var box = document.getElementById("box");
@@ -42,18 +43,26 @@
         // box.onclick = function(){
         //     console.log("父元素box被点击了");
         // };
-        box.addEventListener('click',function(){
-            console.log("父元素box在捕获阶段被点击了");
-        },true);
-        box.firstElementChild.onclick = function(e){
-            console.log("第一个段落被点击了");
-            e.stopPropagation();
+        // box.addEventListener('click',function(){
+        //     console.log("父元素box在捕获阶段被点击了");
+        // },true);
+        // box.firstElementChild.onclick = function(e){
+        //     console.log("第一个段落被点击了");
+        //     e.stopPropagation();
             
-        };
-        box.lastElementChild.onclick = function(e){
-            console.log("最后一个段落被点击了");
-            e.stopPropagation();
-        };
+        // };
+        // box.lastElementChild.onclick = function(e){
+        //     console.log("最后一个段落被点击了");
+        //     e.stopPropagation();
+        // };
+        
+        //浏览器默认行为：
+        //1、a：跳转
+        //2、button：提交 重置
+        //3、鼠标右键弹出系统菜单
+        //4、滚轮滚动页面滚动
+        //阻止浏览器默认行为：e.preventDefaul();
+
 
     </script>
 </body>
