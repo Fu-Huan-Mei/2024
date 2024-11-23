@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TodoList</title>
+    <!--1、事件委托：
+    （1）原理：将事件监听到祖先元素
+    （2）在事件的回调函数进行判断，只有目标元素是指定的元素才可进行操作
+    （3）解决的问题：
+    新增元素事件、需要给大量元素监听事件，使用事件委托可提升效率，减少内存-->
     <style>
         .todolist {
             margin: 50px auto;
@@ -92,6 +97,7 @@
             // console.log(event.target.className);
             // console.log(event.target.nodeName);
             // console.log(event.target.tagName);
+            //目标元素：点的是谁，就是谁
             if (event.target.className === 'delete') {
                 // 删除 删除按钮所在的 li
                 todoContent.removeChild(event.target.parentElement);
