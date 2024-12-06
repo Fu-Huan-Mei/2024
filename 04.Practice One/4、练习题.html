@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const person = {
+            name: "111",
+            age: 12,
+            family: {
+                son: "222",
+            },
+        };
+        const newPerson = JSON.parse(JSON.stringify(person));
+        console.log('修改前person=', person);
+        console.log('修改前person.family=', person.family);
+        console.log('修改前newPerson=', newPerson);
+        console.log('修改前newPerson.family=',newPerson.family);
+        newPerson.family.son = "333";
+        person.family.son = "444";
+        console.log('修改后person=', person);
+        console.log('修改后person.family=', person.family);
+        console.log('修改后newPerson=', newPerson);
+        console.log('修改后newPerson.family=',newPerson.family);
+
+        
+    </script>
+</body>
+
+</html>
