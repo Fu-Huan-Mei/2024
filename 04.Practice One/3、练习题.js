@@ -47,50 +47,29 @@
 // });
 // console.log(person);
 
-//我这个确实是想直接修改原数组！！！而不是修改数组！！！
+//我这个确实是想直接修改原数组！！！而不是创建新数组！！！
 const person = [
   {
     name: "111",
     age: 12,
-    family: [
-      {
-        names: "111",
-        age: 12,
-        son: "222",
-        type: 1
-      },
-      {
-        names: "333",
-        age: 10,
-        son: "444",
-        type: 2
-      }
+    family: [{names: "111",age: 12,son: "222",type: 1},{names: "333",age: 10,son: "444",type: 2}
     ]
   },
   {
     name: "555",
     age: 20,
-    family: [
-      {
-        names: "555",
-        age: 20,
-        son: "666",
-        type: 2
-      },
-      {
-        names: "777",
-        age: 25,
-        son: "888",
-        type: 1
-      }
-    ]
+    family: [{names: "555",age: 20,son: "666",type: 2},{names: "777",age: 25,son: "888",type: 1}]
   }
 ];
-
 person.forEach(item => {
   item.family = item.family.filter(newItem => {
     return newItem.type === 1;
   });
 });
-
 console.log(person);
+
+import * as math from "math.js";
+//数字
+let num = 100;
+//数字*100并且转为字符串渲染
+let res = math.multiply(math.bignumber(100),100).toString();
