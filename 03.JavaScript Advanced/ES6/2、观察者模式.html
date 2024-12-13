@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>观察者模式</title>
+    <!--观察者模式：观察者对象用于观察另1个对象定位属性值变化，当属性值变化后会收到1个通知，会做一些事-->
+</head>
+<body>
+    <div id="container">
+        <p>
+            <span>a</span>
+            <span>1/span>
+        </p>
+    </div>
+    <script>
+        //创建1个观察者
+        function observer(target){
+            const div = document.getElementById("container");
+            //初始化观察者
+            const ob = {};
+            //获取目标对象得所有属性名
+            const props = Object.keys(target);
+            //循环属性名
+            for(const prop of props){
+                //每次循环都要目标对象值赋给观察者对象
+                //但我想要效果：给某个属性赋值会收到通知
+                // ob[prop] = target[prop];
+                Object.defineProperty(ob,prop,{
+                    get(){
+                        //读取值
+                        return target[prop];
+                    },
+                    set(val){
+                        //赋值
+                        target[prop] = val;
+                        render();
+                    },
+                    enumerable:true//可被枚举
+                })
+            }
+
+            function render(){
+                // div.innerHTML = `<p>
+                //     </p>`
+                let html = '';
+                for(const prop of Object.keys(ob)){
+                    html += `<p><span>${prop}</span><span>${ob[prop]}</span></p>`
+                }
+                div.innerHTML = html;
+            }
+            return ob;
+        }
+        const target = {
+            a:1,
+            b:2
+        }
+        const obj = observer(target);
+        /*缺陷：2个对象：
+        （1）target和obj，但如果再target对象新增属性时，不会再收到通知了
+        （2）内存空间浪费
+        */
+    </script>
+</body>
+</html>
