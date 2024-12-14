@@ -13,7 +13,7 @@
             <span>1/span>
         </p>
     </div>
-    <script>
+    <!-- <script>
         //创建1个观察者
         function observer(target){
             const div = document.getElementById("container");
@@ -58,7 +58,64 @@
         const obj = observer(target);
         /*缺陷：2个对象：
         （1）target和obj，但如果再target对象新增属性时，不会再收到通知了
-        （2）内存空间浪费
+        ()
+        */
+    </script> -->
+     <script>
+        //创建1个观察者
+        function observer(target){
+            const div = document.getElementById("container");
+            const proxy = new Proxy(target,{
+                set(target,prop,value){
+                    Reflect.set(target,prop,value)
+                },
+                get(){
+                    
+                }
+                
+            })
+            //初始化观察者
+            const ob = {};
+            //获取目标对象得所有属性名
+            const props = Object.keys(target);
+            //循环属性名
+            for(const prop of props){
+                //每次循环都要目标对象值赋给观察者对象
+                //但我想要效果：给某个属性赋值会收到通知
+                // ob[prop] = target[prop];
+                Object.defineProperty(ob,prop,{
+                    get(){
+                        //读取值
+                        return target[prop];
+                    },
+                    set(val){
+                        //赋值
+                        target[prop] = val;
+                        render();
+                    },
+                    enumerable:true//可被枚举
+                })
+            }
+
+            function render(){
+                // div.innerHTML = `<p>
+                //     </p>`
+                let html = '';
+                for(const prop of Object.keys(ob)){
+                    html += `<p><span>${prop}</span><span>${ob[prop]}</span></p>`
+                }
+                div.innerHTML = html;
+            }
+            return ob;
+        }
+        const target = {
+            a:1,
+            b:2
+        }
+        const obj = observer(target);
+        /*缺陷：2个对象：
+        （1）target和obj，但如果再target对象新增属性时，不会再收到通知了
+        ()
         */
     </script>
 </body>
