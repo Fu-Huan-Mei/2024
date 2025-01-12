@@ -456,15 +456,146 @@ router.ts创建路由器并暴露
 </script>
 17、路由的注意点
 （1）路由组件通常放在pages或views文件夹，一般组件放在components文件夹
-（2）通过点击导航，视觉上消失了的路由组件，默认是被销毁的，需要时才回去挂载
+（2）通过点击导航，视觉上消失了的路由组件，默认是被卸载的，需要时才回去挂载
 路由组件：靠路由规则渲染出来的组件
 一般组件：亲手写标签写好的
-18、路由：router-link组件中to的两种写法：
+18、路由器的工作模式
+（1）history模式：
+vue2：mode:'history'
+vue3：history:createWebHistory()
+（2）hash模式
+vue2：mode:'hash'
+vue3：hash:createWebHasHistory()
+19、路由：router-link组件中to的两种写法：
+（1）to的字符串写法：to="path"
+<RouterLink to="/home"></RouterLink>
+（2）to的对象写法：:to="{path:'路由路径'}
+<RouterLink :to="{path:'/home'}"></RouterLink>
+20、嵌套路由：
+<script lang="ts">
+    //第1步：引入createRouter
+    import {createRouter,createWebHistory} from 'vue-router';
+    import Home from './components/Home';
+    //第2步：创建路由器
+    let router = createRouter({
+        history:createWebHistory(),
+        routes:[
+            {
+                path:'/home',
+                component:Home
+            },
+             {
+                path:'/about',
+                component:About
+            },
+             {
+                path:'/news',
+                component:News
+            }
+        ]
+    });
+    //暴露router
+    export default router;
+</script>
+21、路由：query参数
+<li v-for="news in newsList" :key="news.id">
+<!--（1）第1种写法-->
+<router-link :to="`/news/detail?id=${news.id}&&title=${news.title}&&content=${news.content}`">{{news.title}}</router-link>
+<!--（2）第2种写法-->
+<router-link :to="{path:'/news/detail',query:{
+id:news.id}}">{{news.title}}</router-link>
+<router-link :to="{name:'detail',query:{
+id:news.id}}">{{news.title}}</router-link>
+</li>
+<script setup lang="ts">
+    //Detail.vue
+    import {toRefs} from "vue";
+    import {useRoute} from 'vue-router';
+    let route = useRoute();
+    //解构响应式对象
+    let {query} = toRefs(route);
+</script>
+22、params参数：占位！！！
+router.js
+<script>
+    import Detail from "./components/"
+    {
+        name:'detail',
+        path:'/news/detail/:x/:y/:z',//占位符
+        component:Detail
+    }
+</script>
+<!--第1种写法：-->
+<router-link to="/news/detail/哈哈哈/您好/哈哈哈">{{news.title}}
+</router-link>
+<!--第2种写法：-->
+<router-link :to="{name:'detail',params:{id:news.id,title:news.title,content:news.content}}">{{news.title}}
+</router-link>
+Detail.vue组件
+<script>
+</script>
+params传参注意点：
+（1）传递params参数时，若使用to的对象写法，必须使用name配置项，不能使用path
+（2）传递params参数时，需要提前在路由规则中占位
+23、路由规则的props配置
+router.js
+<script>
+    import Detail from "./components/"
+    {
+        name:'detail',
+        path:'/news/detail/:id/:title/:content',//占位符
+        component:Detail,
+        //写法1：布尔值：将路由收到的所有params参数作为props传给路由组件
+        // props:true,
+        //写法2：函数式：可自由决定将什么作为props参数传给组件
+        props(route){
+            return route.query;
+        },
+        //写法3：对象式：可自由决定将什么作为props参数传给组件【写死了，用得较少】
+        // props:{
+        //     a:100,
+        //     b:200,
+        //     c:300
+        // }
+    }
+    defineProps(['id','title','content'])
+</script>
+24、路由的replace、push属性：控制路由跳转时操作浏览器历史记录的模式
+25、编程式导航：比如支付成功后3秒跳转到支付成功页面
+<script setup lang="ts">
+    //Detail.vue
+    import {onMounted} from "vue";
+    import {useRouter} from 'vue-router';
+    let router = useRouter();
+    onMounted(()=>{
+        //编程式路由导航（脱离router-link的导航）
+        router.push('/news');
+    },3000);
+</script>
+26、多个组件共享数据：集中式状态（数据）管理：pinia和vuex、redux
+27、搭建pinia环境
+（1）安装：npm install pinia
+（2）
+（3）
+根组件App.vue
+<template>
+    <div>
+        <h2>我是App组件</h2>
+    </div>
+</template>
+<script lang="ts" setup name="App">
 
+</script>
+求和组件：Count.vue
+<template>
+    <div>
+        <h2>我是App组件</h2>
+    </div>
+</template>
+<script lang="ts" setup name="Count">
 
-
-
-
-
-
-
+</script>
+main.ts
+<script lang="ts">
+    
+</script>
