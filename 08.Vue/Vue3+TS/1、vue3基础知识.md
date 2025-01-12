@@ -243,3 +243,205 @@ state.count++; // 触发 watch 回调
 （2）ref 定义的基本类型：newVal 和 oldVal 会正确反映变化前后的值。
 （3）ref 定义的对象：newVal 和 oldVal 会指向同一个对象，情况与 reactive 类似。
 10、watchEffect
+<script setup lang="ts">
+    import {ref} from "vue";
+    //数据
+    let temp = ref(10);
+    let height = ref(0);
+    //方法
+    function changeTemp(){
+        temp.value += 10;
+    }
+    function changeHeight(){
+        height.value += 10;
+    }
+    //（1）watch：按需监视 明确指出监视的数据
+    watch([temp,height],(value)=>{
+        let [newTemp,newHeight] = value;
+        if(newTemp >= 60 || newHeight >= 80){
+            console.log("~~给服务器发请求");
+        }
+    })
+    //🔺（2）watchEffect：自动监视函数中用到哪些属性，就会监视哪些属性
+    watchEffect(()=>{
+        console.log("~~默认开启立即监视");
+        if(temp.value >= 60 || height.value >= 80){
+           console.log("~~给服务器发请求"); 
+        }
+    });
+</script>
+11、标签中的ref属性：局部
+子组件
+（1）作用：注册模板引用
+（2）普通DOM标签：获取DOM节点
+（3）组件标签：获取组件实例对象
+<script>
+    import {ref,defineExpose} from 'vue';
+    let a = ref(0);
+    let b = ref(1);
+    let c = ref(2);
+    function showLog(){
+        console.log("~~a.value=",a.value);
+    };
+    //注意：只有子组件使用defineExpose()把数据暴露出去了，在父组件的使用ref属性获取该子组件数据时，才可获取这些值，否则无法获取这些值
+    defineExpose({a:a.value,b:b.value,c:c.value});
+</script>
+
+父组件
+<template>
+<h2 ref="title">上海</h2>
+<button @click="showLog">点我输出h2的title</button>
+<Person ref="person">子组件</Person>
+</template>
+<script>
+    import {ref} from "vue";
+    let title = ref();
+    function showLog(){
+        console.log("~~title.value=",title.value)
+    }
+</script>
+12、回顾TS中的接口、泛型、自定义类型
+<script lang="ts" setup name="Person">
+    //接口规范
+    import {type PersonInter,type Persons} from "./types/index.ts";
+    //（1）限制单条数据：
+    let person:PersonInter = {
+        id:001,
+        name:'张三',
+        age:60
+    }
+    //（2）限制多条数据
+    let personList:Array<PersonInter> = [
+        {
+        id:001,
+        name:'张三',
+        age:60
+    },
+    {
+        id:002,
+        name:'李四',
+        age:80
+    }
+    ]
+    let personList:Persons = [
+        {
+        id:001,
+        name:'张三',
+        age:60
+    },
+    {
+        id:002,
+        name:'李四',
+        age:80
+    }
+    ]
+</script>
+13、props的使用:在 Vue 3 中，defineProps 可以非常灵活地定义组件的 props，你可以根据需要选择最适合你的场景的用法。使用对象、数组、字符串或类型定义 props 都是可以的，具体取决于你的偏好和项目的需求。
+（1）父组件：App.vue
+<template>
+<Child a="哈哈哈" b="嘻嘻嘻"></Child>
+</template>
+<script setup lang="ts">
+    //let personList:Persons = xxxxx
+    // 或  直接传泛型
+    let personList = reactive<Persons>([
+          {
+        id:001,
+        name:'张三',
+        age:60
+    },
+    {
+        id:002,
+        name:'李四',
+        age:80
+    },
+    {
+        id:003,
+        name:'王五',
+        age:80
+    }]);
+</script>
+（2）子组件：Child.vue
+<template>
+<div>
+<h2>{{a}}</h2>
+</div>
+</template>
+<script setup lang="ts">
+//（1）接收list
+//defineProps(['list']);
+//（2）接收list + 限制类型 
+let x = defineProps<{list:Persons}>();
+// defineProps<{ list: Persons[] }>();
+//（3）接收list + 限制类型 +限制必要性
+widthDefaults(defineProps<{list:Persons}>(),list:()=>[{{
+        id:000,
+        name:'小李',
+        age:100
+    }}
+]);
+</script>
+14、Vue3生命周期：特定时刻调用特定函数
+（1）创建：setup()
+（2）挂载：onBeforeMount()、onMounted()
+（3）更新：onBeforeUpdate()、onUpdated()
+（4）卸载：onBeforeUnmoun()、onUnmouted()
+15、自定义hooks：类似于mixin
+<script setup lang="ts">
+    import useDog from "./hook/2、useDog.js";
+    let {dogList,getDog} = useDog();  
+</script>
+16、对路由的理解、基本效果切换
+（1）导航区、展示区
+（2）路由器
+（3）路由规则
+（4）形成xx.vue组件
+App.vue根组件
+<template>
+<div>
+    <!--导航区-->
+    <div class="navigate">
+        <a href="#">首页</a>
+         <a href="#">新闻</a>
+          <a href="#">关于</a>
+    </div>
+    <!--展示区-->
+    <div class="content">
+        <!--此处可能要展示各种组件，具体展示啥组件需要看路径-->
+    </div>
+</div>
+</template>
+<script setup lang="ts">   
+import {createApp} from 'vue';
+import App from './App.vue';
+import router from './router';
+let app = createApp(App);
+app.mount('#app');
+</script>
+router.ts创建路由器并暴露
+<script lang="ts">
+    //第1步：引入createRouter
+    import {createRouter,createWebHistory} from 'vue-router';
+    import Home from './components/Home';
+    //第2步：创建路由器
+    let router = createRouter({
+        history:createWebHistory(),
+        routes:[
+            {
+                path:'/home',
+                component:Home
+            }
+        ]
+    });
+    //暴露router
+    export default router;
+</script>
+
+
+
+
+
+
+
+
+
