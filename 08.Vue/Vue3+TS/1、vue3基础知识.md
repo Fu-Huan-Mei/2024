@@ -401,22 +401,32 @@ App.vue根组件
 <div>
     <!--导航区-->
     <div class="navigate">
-        <a href="#">首页</a>
+        <!-- <a href="#">首页</a>
          <a href="#">新闻</a>
-          <a href="#">关于</a>
+          <a href="#">关于</a> -->
+          <RouterLink to="/home" active-class="active">首页</RouterLink>
+          <RouterLink to="/news"  active-class="active">新闻</RouterLink>
+          <RouterLink to="/about" active-class="active">关于</RouterLink>
     </div>
     <!--展示区-->
     <div class="content">
         <!--此处可能要展示各种组件，具体展示啥组件需要看路径-->
+        <router-view></router-view>
     </div>
 </div>
 </template>
+//main.ts文件
 <script setup lang="ts">   
 import {createApp} from 'vue';
 import App from './App.vue';
 import router from './router';
+//创建1个应用
 let app = createApp(App);
+//使用路由器
+app.use(router);
+//挂载整个应用到app容器中
 app.mount('#app');
+
 </script>
 router.ts创建路由器并暴露
 <script lang="ts">
@@ -430,13 +440,26 @@ router.ts创建路由器并暴露
             {
                 path:'/home',
                 component:Home
+            },
+             {
+                path:'/about',
+                component:About
+            },
+             {
+                path:'/news',
+                component:News
             }
         ]
     });
     //暴露router
     export default router;
 </script>
-
+17、路由的注意点
+（1）路由组件通常放在pages或views文件夹，一般组件放在components文件夹
+（2）通过点击导航，视觉上消失了的路由组件，默认是被销毁的，需要时才回去挂载
+路由组件：靠路由规则渲染出来的组件
+一般组件：亲手写标签写好的
+18、路由：router-link组件中to的两种写法：
 
 
 
