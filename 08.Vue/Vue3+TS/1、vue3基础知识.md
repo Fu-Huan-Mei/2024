@@ -575,8 +575,72 @@ router.js
 26、多个组件共享数据：集中式状态（数据）管理：pinia和vuex、redux
 27、搭建pinia环境
 （1）安装：npm install pinia
-（2）
-（3）
+（2）在mian.ts进行配置：
+<script lang="ts">
+//引入
+import {createPinia} from 'pinia';
+//创建
+const pinia = createPinia();
+//安装
+app.use(pinia);
+</script>
+（3）使用pinia存储数据并读取数据：
+<script lang="ts">
+//存数据：defineStore()
+import { defineStore } from 'pinia';
+//分别暴露
+export const useCountStore = defineStore("count", {
+    //(1)存储数据
+    state() {
+        return {
+            sum: 6
+        }
+    }
+})
+</script>
+------------------------------------------------------------
+求和组件：Count.vue
+<template>
+    <div>
+        <h2>我是App组件</h2>
+    </div>
+</template>
+<script lang="ts" setup name="Count">
+import {useCountStore} from './store/count.ts';
+let n = ref(1);
+//(3)使用useCountStore得到1个专门保存count相关的store
+const countStore = useCountStore();
+//(2)读数据：获取store中state中的数据：两种方式
+console.log("~~countStore.sum=",countStore.sum);
+console.log("~~countStore.$state.sum=",countStore.$state.sum);
+//（4）修改数据
+function add(){
+    //方式1：单个修改
+    countStore.sum += 1;
+    countStore.num += 666;
+    //方式2：批量修改（批量变更）
+    countStore.$patch({
+        sum:888,
+        num:1000
+    });
+    //方式3：
+    countStore.increment(n.value);
+}
+//减法
+function decrese(){
+    //方式1：单个修改
+    countStore.sum += 1;
+    countStore.num += 666;
+    //方式2：批量修改（批量变更）
+    countStore.$patch({
+        sum:888,
+        num:1000
+    });
+    //方式3：
+    countStore.increment(n.value);
+}
+</script>
+------------------------------------------------------------
 根组件App.vue
 <template>
     <div>
@@ -586,16 +650,143 @@ router.js
 <script lang="ts" setup name="App">
 
 </script>
-求和组件：Count.vue
+前端面试题：默认导出和命名导出有啥区别？
+特点	                 命名导出	                    默认导出
+导出方式	          export	                    export default
+导入方式	          import { ... }	            import ...
+模块中导出数量	       多个	                         一个
+导入时的名称	 必须使用相同名称（或别名）	           可以任意命名
+适用场景	         多个导出内容	                  单个主要导出内容
+--------------------------------------------
+30、storeToRefs()：
+（1）只会关注store中的数据，使其变成响应式数据，不会对方法包装为响应式数据
+（2）借助storeToRefs将store中的数据转为ref对象，方便在模板中使用
+（3）注意：pinia提供的storeToRefs()只会对state中的数据做转换，但vue中的toRefs会转换store中所有内容，包括state数据、actions方法等等
+<script setup lang="ts">
+    import {storeToRefs} from "pinia";
+    import {useTalkStore} from "./store/talkList.ts";
+    const talkStore = useTalkStore();
+    const {talkList } = storeToRefs(talkStore);
+</script>
+31、getters的使用：
+（1）当state中的数据需要经过处理后再使用，可使用getters配置
+（2）追加getters配置
+<script setup lang="ts">
+    import {storeToRefs} from "pinia";
+    import {useTalkStore} from "./store/talkList.ts";
+    const talkStore = useTalkStore();
+    const {talkList } = storeToRefs(talkStore);
+</script>
+32、$subscribe的使用：订阅：可监视vuex中数据的修改
+<script setup lang="ts">
+    import {storeToRefs} from "pinia";
+    import {useTalkStore} from "./store/talkList.ts";
+    const talkStore = useTalkStore();
+    const {talkList } = storeToRefs(talkStore);
+    talkStore.$subscribe((mutate,state)=>{
+        console.log("~~talkStore中保存的数据发生了变化");
+        localStorage.setItem("talkList",JOSN.stringify(state.talkList));
+    })
+</script>
+33、组件通讯方式
+（1）props：父传子：属性值是非函数、子传父：属性值是函数
+父组件：
 <template>
-    <div>
-        <h2>我是App组件</h2>
-    </div>
+<!--@1:传递props-->
+<Child :car="car" :getToy="getToy"></Child>
+<h2>子组件给的玩具：{{toy}}</h2>
 </template>
-<script lang="ts" setup name="Count">
-
+<script setup lang="ts">
+    import Child from "./Child.vue";
+    //数据
+    let car = ref('奔驰');
+    let toy = ref('');
+    //方法
+    function getToy(value:string){
+        toy.value = value;
+    }
 </script>
-main.ts
+子组件：
+<template>
+<div>
+    <h2>子组件</h2>
+    <h3>父组件的车：{{car}}</h3>
+    <h3 @click="getToy(toy)">把玩具给父组件</h3>
+</div>
+</template>
+<script setup lang="ts">
+    let toy = ref("奥特曼");
+    //@2:声明接收props
+    defineProps(['car','getToy']);
+</script>
+（2）自定义事件：子传父：
+<template>
+<!--给子组件Child绑定事件-->
+<Child @custom="custom"></Child>
+<h2>子组件给的玩具：{{toy}}</h2>
+</template>
+<script setup lang="ts">
+   function test(value:number,a:number,b:number,c:number,event:Event){
+    console.log("test",value);
+   }
+</script>
+子组件：
+<template>
+<button @click="emit('custom',888)">测试</button>
+</template>
+<script setup lang="ts">
+   let toy = ref('奥托');
+   //声明事件
+   const emit = defineEmits(['custom']);
+//    onMounted(()=>{
+//     setTimeOut(()=>{
+//         //调用事件
+//         emit('custom');
+//     },3000);
+//    })
+</script>
+（3）mitt：任意组件通讯：mitt插件
+接收数据：提前绑定好事件（提前订阅消息）
+提供数据：在合适的时间出发事件（发布消息）
+@1:安装：npm i mitt
+emitter.ts文件
 <script lang="ts">
-    
+    //引入mitt
+    import mitt from 'mitt';
+    //调用mitt得到emitter，emitter可：绑定事件、触发事件
+    const emitter  = mitt();
+    //@1绑定事件
+    emitter.on("fn1",()=>{
+        console.log("~~fn1调用了");
+    })
+    emitter.on("fn2",()=>{
+         console.log("~~fn2调用了");
+    })
+    //触发事件
+    setTimeout(()=>{
+      emitter.emit('test1');
+      emitter.emit('test2');  
+    })
+    //暴露emitter
+    export default emitter;
 </script>
+main.ts文件
+<script lang="ts">
+    import emitter from "./emitter.ts";
+</script>
+（4）v-model：表单标签、组件标签
+（5）$refs（父传子）和$parent（子传父）
+（6）$atrrs：祖组件->孙组件：$attrs是1个对象，包含所有父组件传入的标签属性
+注意：$attrs自动排除props中声明的属性（可认为声明过的props以被子组件自己消费了）
+（7）provide和inject：祖孙组件
+在祖先组件中通过provide配置向后代组件提供数据、在后代组件中通过inject配置来声明接收数据
+（8）插槽：
+默认插槽、具名插槽、作用域插槽
+34、注意点：当访问obj.c时，底层会自动读取value属性，因为c是在obj这个响应式对象
+let obj = reactive({
+    a:1,
+    b:2,
+    c:ref(3)
+});
+let x = ref(4);
+Vue3组件通讯总结：
