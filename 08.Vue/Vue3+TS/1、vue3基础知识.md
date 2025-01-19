@@ -745,39 +745,60 @@ function decrese(){
 //     },3000);
 //    })
 </script>
-（3）mitt：任意组件通讯：mitt插件
+（3）mitt：任意组件通讯：mitt插件【类似于emit()事件】
 接收数据：提前绑定好事件（提前订阅消息）
 提供数据：在合适的时间出发事件（发布消息）
 @1:安装：npm i mitt
-emitter.ts文件
 <script lang="ts">
-    //引入mitt
+    //@2：引入mitt
     import mitt from 'mitt';
-    //调用mitt得到emitter，emitter可：绑定事件、触发事件
+    //@3：调用mitt得到emitter，emitter可：绑定事件、触发事件
     const emitter  = mitt();
-    //@1绑定事件
+    //@5：绑定事件
     emitter.on("fn1",()=>{
         console.log("~~fn1调用了");
     })
     emitter.on("fn2",()=>{
          console.log("~~fn2调用了");
     })
-    //触发事件
-    setTimeout(()=>{
+    setInterval(()=>{
+      //@6：触发事件
       emitter.emit('test1');
       emitter.emit('test2');  
-    })
-    //暴露emitter
+    },1000);
+    setTimeout(()=>{
+      //@7：解绑事件
+      emitter.off('test1');
+      emitter.off('test2');  
+    },1000);
+    //@8：清空事件
+    emitter.all.clear();
+    //@4：暴露emitter
     export default emitter;
 </script>
-main.ts文件
 <script lang="ts">
     import emitter from "./emitter.ts";
+    //解绑事件
+    onUnmounted(()=>{
+        emitter.off('send-toy');
+    })
 </script>
-（4）v-model：表单标签、组件标签
-（5）$refs（父传子）和$parent（子传父）
-（6）$atrrs：祖组件->孙组件：$attrs是1个对象，包含所有父组件传入的标签属性
+（4）v-model：表单标签、组件标签：父传子，子传父
+问题：$event到底是啥？
+答：对于原生事件，$event就是事件对象，能XXX.target；
+对于自定义事件，$event就是触发事件时传递的数据，不能XXX.target。
+<AtguiguInput :modelValue="username" @update:modelValue="username == $event"></AtguiguInput>
+（5）$atrrs：祖组件->孙组件：$attrs是1个对象，包含所有父组件传入的标签属性
 注意：$attrs自动排除props中声明的属性（可认为声明过的props以被子组件自己消费了）
+（6）$refs（父传子）和$parent子传父）
+父组件
+<script setup lang="ts">
+    
+</script>
+子组件
+<script setup lang="ts">
+
+</script>
 （7）provide和inject：祖孙组件
 在祖先组件中通过provide配置向后代组件提供数据、在后代组件中通过inject配置来声明接收数据
 （8）插槽：
@@ -790,3 +811,149 @@ let obj = reactive({
 });
 let x = ref(4);
 Vue3组件通讯总结：
+组件关系                               传递方式
+父传子                 props、v-model、$refs、默认插槽、具名插槽
+子传父                 props、自定义事件、v-model、$parent、作用域插槽
+祖传父                 $attrs、provide、inject
+兄弟间、任意组件间传值   mitt、pinia
+35、shallowRef浅层次ref（第1层）、shallowReactive浅层次响应式
+（1）作用：创建1个响应式数据，但只对顶层属性响应式处理
+（2）用法：let myVar = shallowRef(initialValue);
+（3）特点：只追踪引用值变化，不关心值内部的属性变化
+<script setup lang="ts">
+    import {ref,shallowRef,shallowReactive} from 'vue';
+    let sum = shallowRef(0);
+    let person = shallowRef({
+        name:'张三',
+        age:18
+    });
+    //修改成功：因为sum.value是第1层（浅层）
+    function changeSum(){
+        sum.value += 1;
+    };
+    //修改失效：因为person.value是第1层，再.name就是第2层【深层】
+    function changeName(){
+        person.value.name = '李四';
+    };
+    //修改失效：因为person.value是第1层，再.age就是第2层【深层】
+    function changeAge(){
+        person.value.age = 28;
+    };
+    //修改成功：因为person.value是第1层（浅层）
+    function changePerson(){
+        person.value = {
+            name:'Tony',
+            age:100
+        }
+    };
+    //深层次响应式
+    let car = reactive({
+        color:'red',
+        brand:'奔驰'
+    });
+    //浅层次响应式
+    let car = shallowReactive({
+        color:'red',
+        options:{
+            brand:'奔驰',
+            engin:'V8'
+        }
+    });
+    //修改成功：浅层次
+    function changeColor(){
+        car.color = 'black';
+    }
+    //修改失败：深层次
+    function changeBrand(){
+        car.options.brand = '宝马';
+        Objec.assign(car.options) = {
+             brand:'大众',
+             engin:'V10'
+        }
+    }
+</script>
+36、readonly（限制所有层次只读）、shallowReadonly（只限制第1层只读）：保护数据
+<script setup lang="ts">
+    import {readonly} from 'vue';
+    //sum可修改
+    let sum = ref(0);
+    //sum2不能修改
+    let sum2 = readonly(sum);
+    //修改成功：因为sum.value是第1层（浅层）
+    function changeSum(){
+        sum.value += 1;
+    };
+    //修改失败：sum2是只读
+    function changeSum2(){
+        sum2.value += 1;
+    };
+    let car = reactive({
+        color:'red',
+        options:{
+            brand:'奔驰',
+            engin:'V8'
+        }
+    });
+    let car2 = shallowReadonly(car);
+</script>
+37、toRaw(获取响应式对象的原始对象)和markRaw(标记1个对象，使其永远不会变成响应式)
+<script setup lang="ts">
+    import {reactive,toRaw,markRow} from 'vue';
+    //响应式数据
+    let person = reactive({
+        name:'张三',
+        age:18
+    });
+    //获取响应式数据的最原始格式：比如使用第3方库：mockjs、中国4个直辖市
+    let oldPerson = toRaw(person);
+    let citys = markRow({id:001,name:'北京'},{id:002,name:'上海'},{id:003,name:'天津'},{id:004,name:'重庆'})
+</script>
+38、customRef的使用：自定义ref
+<script setup lang="ts">
+    import {ref} from 'vue';
+    //（1）需求：使用Vue默认提供的默认ref定义响应式数据，页面改变，数据等1秒后才更新
+    let msg1 = ref('您好');
+    //（2）解决：自定义ref
+    let initValue = '你好';//初始值
+    let timer;
+    //track跟踪、trigger触发（发射器）
+    let msg2 = customRef((track,trigger)=>{
+        return {
+            //msg2被读取时调用
+            get(){
+                track();//持续跟踪：告诉vue数据msg2很重要，要对msg2进行持续关注，一旦msg2变化就去更新
+                return initValue;
+            },
+            //msg2被修改时调用
+            set(val){
+                clearTimeout(timer);
+                timer = setTimeout(()=>{
+                    initValue = val;
+                    trigger();//通知变化：通知Vue数据msg变化了
+                },1000);
+            }
+        }
+    });
+</script>
+39、Teleport：传送：将组件html结构移动到指定位置的技术
+<teleport to="body">
+    <div class="modal" v-show="isShow">
+    </div>
+</teleport>
+40、Suspense：
+（1）作用：等待异步组件时渲染一些额外内容，增强用户体验
+（2）步骤：
+第1步：异步引入组件
+第2步：使用Suspense包裹组件，并配置好default和fallback
+<template>
+<Suspense>
+    <template v-slot:default>
+        <Child/>
+    </template>
+    <template v-slot:fallback>
+        <h3>加载中......</h3>
+    </template>
+</Suspense>
+</template>
+41、全局API转移到应用对象：app.component('hello')、app.config.globalProperties【添加全局属性】、app.mount、app.unmount、app.use
+42、Vue3的非兼容性使用
