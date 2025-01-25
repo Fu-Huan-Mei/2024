@@ -243,7 +243,7 @@ state.count++; // 触发 watch 回调
 （1）reactive 定义的对象：newVal 和 oldVal 相同，因为对象的引用未改变。可以通过计算属性或深拷贝来解决。
 （2）ref 定义的基本类型：newVal 和 oldVal 会正确反映变化前后的值。
 （3）ref 定义的对象：newVal 和 oldVal 会指向同一个对象，情况与 reactive 类似。
-10、watchEffect：
+10、watchEffect(()=>{   })
 <script setup lang="ts">
     import {ref} from "vue";
     //数据
