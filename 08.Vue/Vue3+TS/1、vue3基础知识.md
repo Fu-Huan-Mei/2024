@@ -138,7 +138,8 @@ watch(() => state.count, (newVal, oldVal) => {
 });
 state.count++; // 触发 watch 回调
 </script>
-第3种：函数返回值（getter函数）
+第3种：函数返回值（getter函数）：只要想监视对象中的某个属性，最好写函数式
+注意点：若是对象监视的是地址值，需要关注对象内部，需要手动开启深度监视
 <script setup lang="ts">
 import { reactive, watch } from 'vue';
 const state = reactive({
@@ -149,7 +150,7 @@ watch(() => state.count, (newVal, oldVal) => {
 });
 state.count++; // 触发 watch 回调
 </script>
-第4种：1个包含上述内容的数组
+第4种：1个包含上述内容：使用数组包裹即可
 <script setup lang="ts">
 import { ref, reactive, watch } from 'vue';
 const count = ref(0);
@@ -242,7 +243,7 @@ state.count++; // 触发 watch 回调
 （1）reactive 定义的对象：newVal 和 oldVal 相同，因为对象的引用未改变。可以通过计算属性或深拷贝来解决。
 （2）ref 定义的基本类型：newVal 和 oldVal 会正确反映变化前后的值。
 （3）ref 定义的对象：newVal 和 oldVal 会指向同一个对象，情况与 reactive 类似。
-10、watchEffect
+10、watchEffect：
 <script setup lang="ts">
     import {ref} from "vue";
     //数据
