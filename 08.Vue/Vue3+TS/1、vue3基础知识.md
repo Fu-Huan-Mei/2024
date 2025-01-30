@@ -546,13 +546,13 @@ router.js
         name:'detail',
         path:'/news/detail/:id/:title/:content',//占位符
         component:Detail,
-        //写法1：布尔值：将路由收到的所有params参数作为props传给路由组件
+        //写法1：布尔值写法：将路由收到的所有params参数作为props传给路由组件
         // props:true,
-        //写法2：函数式：可自由决定将什么作为props参数传给组件
+        //写法2：函数式写法：可自由决定将什么作为props参数传给组件
         props(route){
             return route.query;
         },
-        //写法3：对象式：可自由决定将什么作为props参数传给组件【写死了，用得较少】
+        //写法3：对象式写法：可自由决定将什么作为props参数传给组件【写死了，用得较少】
         // props:{
         //     a:100,
         //     b:200,
